@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/flor.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Portfólio Ingrid Lima</title>
+  </head>
+  
+  <body>
+    <header class="idioma">
+      <button class="lang-btn active">PT</button>
+      <button class="lang-btn">EN</button>
+    </header>
+
+    <!-- HERO -->
+<main class="hero" id="top">
+  <!-- shapes de fundo (parallax) -->
+  <div class="shape s1" data-speed="-0.2" aria-hidden="true"></div>
+  <div class="shape s2" data-speed="0.35" aria-hidden="true"></div>
+  <div class="shape s3" data-speed="0.1" aria-hidden="true"></div>
+  <!-- conteúdo central -->
+  <div class="hero-wrap">
+    <h1 class="hero-title reveal">PORTFÓLIO</h1>
+    <p class="hero-sub reveal">Ingrid Lima</p>
+
+    <!-- navegação por âncoras (opcional agora) 
+    <nav class="hero-anchors reveal" aria-label="Seções">
+      <a href="#design">Design</a>
+      <a href="#teatro">Teatro</a>
+      <a href="#escrita">Escrita</a>
+    </nav>-->
+  </div>
+</main>
+
+<section class="about" id="sobre">
+  <div class="about-wrap">
+    <h2 class="about-title reveal">SOBRE MIM</h2>
+
+    <div class="about-content">
+      <div class="about-text left reveal">
+        <p><span class="hand">oi,</span> essa sou eu</p>
+        <p>Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que <em>toda boa história nasce de um olhar atento.</em></p>
+      </div>
+
+      <div class="about-photo reveal">
+        <img src="/assets/foto-ingrid.png" alt="Minha Foto :)" />
+      </div>
+
+      <div class="about-text right reveal">
+        <p>Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em></p>
+        <p>Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- SETAS -->
+<img src="/assets/seta-esq-sup.svg" alt="" class="arrow a-left-top reveal">
+<img src="/assets/seta-esq-sup.svg" alt="" class="arrow a-right-top reveal">
+<img src="/assets/seta-esq-inf.svg" alt="" class="arrow a-left-bottom reveal">
+<img src="/assets/seta-dir-inf.svg" alt="" class="arrow a-right-bottom reveal">
+</section>
+
+<section class="gallery" id="galeria">
+  <h2 class="gallery-title reveal">Ingrid’s Gallery</h2>
+
+  <!-- Masonry (apenas exemplos, troque as imagens e links) -->
+  <div class="masonry">
+    <a class="card reveal" href="projeto.html?slug=cartas" aria-label="Abrir projeto Cartas">
+      <img src="/assets/cartas.png" alt="Capa do projeto Cartas" loading="lazy">
+      <span class="card-caption">Cartas para o Amanhã</span>
+    </a>
+
+    <a class="card reveal" href="projeto.html?slug=born" aria-label="Abrir projeto Born">
+      <img src="/assets/worikg.png" alt="Documentário Worikg">
+      <span class="card-caption">Documentário Worikg</span>
+    </a>
+
+    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
+      <img src="/assets/teatro.png" alt="A Ordem e o Abismo">
+      <span class="card-caption">A Ordem e o Abismo</span>
+    </a>
+
+    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
+      <img src="/assets/dmmb.png" alt="Devaneios de Madrugada">
+      <span class="card-caption">Devaneios de Madrugada de uma Mente Bitolada</span>
+    </a>
+
+    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
+      <img src="/assets/farma.png" alt="Farmaceutico de Primeira Viagem">
+      <span class="card-caption">Farmacêutico de Primeira Viagem</span>
+    </a>
+    <!-- duplique <a class="card">…</a> para mais itens -->
+  </div>
+</section>
+
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
