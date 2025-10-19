@@ -26,6 +26,51 @@ body {
   margin-top: 20px;
 }
 
+/*sanduicher*/
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 6vw;
+  background: linear-gradient(#000A, #0000);
+  backdrop-filter: blur(2px);
+}
+.brand{
+  color:#C5AFD5; text-decoration:none;
+  font-family: "Gistesy", cursive; font-size: 60px; letter-spacing:.03em;
+}
+
+.hamburger{
+  width: 40px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer;
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 6px;
+}
+.hamburger span{
+  display:block; height:2px; width:100%; background:#fff; border-radius:2px; transition: transform .25s, opacity .25s;
+}
+.hamburger[aria-expanded="true"] span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.hamburger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+/* Drawer lateral */
+.menu-drawer{
+  position: fixed; inset: 0 0 0 auto; width: min(260px, 80vw);
+  background:#0b0b0b; transform: translateX(100%);
+  transition: transform .28s ease; z-index: 60; padding-top: 80px;
+}
+.menu-drawer.open{ transform: translateX(0); }
+.menu-inner{ display:flex; flex-direction:column; gap:16px; padding:0 20px 40px; }
+.menu-link{
+  color:#fff; text-decoration:none; font-family:"Poppins", sans-serif;
+  font-weight:400; letter-spacing:.06em; text-transform:uppercase;
+}
+.menu-link:hover{ color:#C5AFD5; }
+
+/* Fundo escuro */
+.menu-backdrop{
+  position: fixed; inset:0; background:#0006; backdrop-filter: blur(1px);
+  z-index:55;
+}
+
+
 .lang-btn {
   background: none;
   border: none;
@@ -464,78 +509,152 @@ body { font-family: "Poppins", sans-serif; }
 }
 
 /* ===== CASE PAGE ===== */
-.case-hero{
-  padding: 80px 6vw 40px;
-  position: relative;
-}
-
+.case-hero{ padding: 40px 6vw 20px; text-align: center; }
 .case-title{
   font-family: "Lostar", serif;
   font-size: clamp(2.4rem, 8vw, 4rem);
   margin: 0 0 16px;
-  text-align: center;
 }
-.case-banner {
+
+/* mate qualquer overflow horizontal globalmente (seguro) */
+html, body { overflow-x: hidden; }
+
+/* banner com largura da janela, ignorando o padding do container */
+.case-banner{
   position: relative;
-  width: 100%;
-  height: 500px;
+  width: 100vw;                  /* largura da viewport */
+  left: 50%;                     /* truque de full-bleed */
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  height: clamp(360px, 60vh, 700px);  /* menor altura que 100vh */
   overflow: hidden;
 }
 
-/* a imagem é o fundo da janela */
-.banner-bg {
-  position: absolute;
-  inset: 0;
+.banner-bg{
+  position: absolute; inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: translateY(0);
-  transition: transform 0.1s linear;
+  transform: translateY(0);      /* seu parallax usa só Y, sem X (não gera overflow) */
+  transition: transform .12s linear;
   will-change: transform;
 }
 
 
 /* três colunas responsivas */
-.case-grid{
+.case-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  padding: 40px 6vw 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 80px 10vw;
+  background: linear-gradient(180deg, #000 0%, #070708 100%);
 }
-.case-grid h3{
+
+.case-col {
+  padding: 28px;
+  border-radius: 16px;
+  background: #0d0d0d;
+  box-shadow: 0 0 0 1px #1a1a1a inset;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.case-col:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 10px #1118;
+}
+
+.case-col h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
+  color: #C5AFD5;
   letter-spacing: .08em;
+  margin-bottom: 12px;
 }
-.case-grid p{
+
+.case-col p {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
+  line-height: 1.7;
+  color: #f0f0f0;
 }
 
-@media (max-width: 900px){
-  .case-grid{ grid-template-columns: 1fr; }
+/* ===== CASE GALLERY ===== */
+.case-gallery {
+  position: relative;
+  margin: 100px 0;
+  padding: 20px 10vw;
+  /* continuamos usando scroll horizontal internamente,
+     mas escondemos a barra e controlamos por botões */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;     /* IE/Edge antigo */
+  scrollbar-width: none;        /* Firefox */
+}
+.case-gallery::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.scroll-row {
+  display: flex;
+  gap: 40px;
 }
 
-/* blocos grandes */
-.case-sections{
-  padding: 20px 6vw 120px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-}
-.case-block h3{
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  letter-spacing: .08em;
-  margin-bottom: 10px;
-}
-.case-box{
-  min-height: 200px;
+/* Tamanho padronizado dos quadros */
+.frame {
+  scroll-snap-align: center;
+  flex: 0 0 clamp(280px, 70vw, 920px); /* largura responsiva, máx ~920px */
+  aspect-ratio: 16 / 9;                /* altura padronizada */
   border-radius: 16px;
-  /*background: #111;           placeholder; troque por imagens/iframes */
+  overflow: hidden;
+  box-shadow: 0 0 20px #0009;
+  background: #0d0d0d;
 }
-.case-box.tall{ min-height: 420px; }
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* garante corte consistente sem distorcer */
+  display: block;
+}
 
-@media (max-width: 900px){
-  .case-sections{ grid-template-columns: 1fr; }
+/* ===== Botões de navegação ===== */
+.case-nav {
+  pointer-events: none;        /* container não intercepta, só os botões */
 }
+.case-nav button {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border: 0; border-radius: 999px;
+  background: #111a;
+  backdrop-filter: blur(2px);
+  color: #fff; font-size: 20px; line-height: 1;
+  display: grid; place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px #222 inset, 0 6px 16px #0008;
+  transition: background .2s ease, transform .12s ease, opacity .2s ease;
+}
+.case-nav button:hover { background: #111f; }
+.case-nav button:active { transform: translateY(-50%) scale(.98); }
+
+.case-nav .prev { left: 2vw; }
+.case-nav .next { right: 2vw; }
+
+/* Esconde setas quando a tela é muito estreita (opcional) */
+@media (max-width: 480px){
+  .case-nav button { width: 38px; height: 38px; font-size: 18px; }
+}
+
+/* ===== Legendas ===== */
+.frame figcaption {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: .95rem;
+  color: #eaeaea;
+  background: linear-gradient(180deg, #0000, #000a);
+  padding: 10px 12px;
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+}
+

@@ -135,3 +135,82 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+// ===== MENU SANDUÍCHE (abrir/fechar) =====
+(() => {
+  const btn = document.querySelector('.hamburger');
+  const drawer = document.querySelector('#menu-drawer');
+  const backdrop = document.querySelector('.menu-backdrop');
+  if (!btn || !drawer || !backdrop) return;
+
+  const open = () => {
+    btn.setAttribute('aria-expanded', 'true');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    btn.setAttribute('aria-expanded', 'false');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? close() : open();
+  });
+  backdrop.addEventListener('click', close);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+// =========================
+// Galeria do case: setas prev/next
+// =========================
+(() => {
+  const gallery = document.querySelector('.case-gallery');
+  if (!gallery) return;
+
+  const row = gallery.querySelector('.scroll-row');
+  const prev = gallery.querySelector('.case-nav .prev');
+  const next = gallery.querySelector('.case-nav .next');
+
+  if (!row || !prev || !next) return;
+
+  // gap usado no CSS (40px). Se um dia mudar no CSS, atualize aqui também.
+  const GAP = 40;
+
+  const frameWidth = () => {
+    const first = row.querySelector('.frame');
+    if (!first) return 0;
+    // largura do quadro + gap para pular "um slide"
+    return Math.round(first.getBoundingClientRect().width + GAP);
+  };
+
+  const scrollByFrame = (dir = 1) => {
+    const amount = frameWidth() * dir;
+    row.scrollBy({ left: amount, behavior: 'smooth' });
+  };
+
+  prev.addEventListener('click', () => scrollByFrame(-1));
+  next.addEventListener('click', () => scrollByFrame(1));
+
+  // Acessibilidade: setinhas do teclado
+  gallery.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') scrollByFrame(-1);
+    if (e.key === 'ArrowRight') scrollByFrame(1);
+  });
+
+  // Opcional: desabilita seta quando chegou ao início/fim
+  const toggleButtons = () => {
+    const max = row.scrollWidth - row.clientWidth - 1;
+    prev.style.opacity = row.scrollLeft <= 0 ? .35 : 1;
+    next.style.opacity = row.scrollLeft >= max ? .35 : 1;
+  };
+  row.addEventListener('scroll', toggleButtons, { passive: true });
+  window.addEventListener('resize', toggleButtons);
+  toggleButtons();
+})();

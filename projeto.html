@@ -1,63 +1,89 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Poppins (você já usa no site) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon (corrigido o type) -->
+  <link rel="icon" type="image/svg+xml" href="./assets/estrela.svg">
+
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="imagens" href="./assets/estrela.svg">
   <title>Devaneios de Madrugada</title>
 </head>
 <body>
-  <!-- você pode repetir seu header de idioma aqui -->
 
-  <section class="case-hero">
+  <!-- HEADER: menu sanduíche para navegar na página principal -->
+  <header class="site-header">
+    <a class="brand" href="index.html#top" aria-label="Voltar para Home">Ingrid Lima</a>
+
+    <button class="hamburger" aria-expanded="false" aria-controls="menu-drawer" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="menu-drawer" class="menu-drawer" aria-hidden="true">
+      <div class="menu-inner">
+        <a href="index.html#top"     class="menu-link">Home</a>
+        <a href="index.html#galeria" class="menu-link">Galeria</a>
+        <a href="index.html#contato" class="menu-link">Contato</a>
+      </div>
+    </nav>
+
+    <div class="menu-backdrop" hidden></div>
+  </header>
+
+  <!-- TÍTULO + BANNER FULL (parallax “janela viva”) -->
+  <section class="case-hero reveal">
     <h1 class="case-title">Diagramação</h1>
+
     <section class="case-banner">
       <div class="banner-bg" style="background-image: url('/assets/dmmb/banner.png')"></div>
     </section>
-
   </section>
 
+  <!-- TRINCA: SOBRE / BRIEFING / DESENVOLVIMENTO -->
   <section class="case-grid">
-    <div class="case-col">
+    <div class="case-col reveal">
       <h3>SOBRE</h3>
       <p>Devaneios de Madrugada de uma Mente Bitolada é uma coletânea de poesias que atravessa emoções sutis e intensas, explorando a delicadeza dos sentimentos humanos. O livro propõe uma leitura sensorial, onde palavra, silêncio e espaço visual se entrelaçam em uma experiência estética e introspectiva.</p>
     </div>
-    <div class="case-col">
+    <div class="case-col reveal">
       <h3>BRIEFING</h3>
       <p>O projeto nasceu do desejo de registrar pensamentos e sensações noturnas em formato poético, transformando experiências pessoais em linguagem visual e literária. O desafio foi criar uma identidade que equilibrasse emoção e racionalidade, traduzindo o tom íntimo das poesias em um design que respirasse delicadeza e silêncio.</p>
     </div>
-    <div class="case-col">
+    <div class="case-col reveal">
       <h3>DESENVOLVIMENTO</h3>
       <p>O processo envolveu a escolha de uma tipografia fluida e contemporânea, capaz de refletir a sensibilidade dos textos, e um grid minimalista que privilegia o espaço em branco como elemento expressivo. A paleta monocromática reforça o caráter introspectivo, enquanto os detalhes sutis — como linhas finas e pequenos ícones — criam um ritmo visual que acompanha o respiro poético de cada página.</p>
     </div>
   </section>
 
-  <section class="case-sections">
-    <div class="case-block">
-      <h3>INSIGTHS</h3>
-      <div class="case-box">Durante o processo, percebi como o espaço negativo e o silêncio visual podem ser tão expressivos quanto a própria palavra. Entendi que o design de um livro de poesia não deve ilustrar o texto, mas sim respirar com ele — criar pausas, ritmo e intimidade. Essa experiência me fez enxergar o design editorial como um território de emoção e contenção.</div>
-    </div>
-    <div class="case-block">
-      <h3>MOOD BOARD</h3>
-      <div class="case-box">
-        <img src="/assets/dmmb/moodboard.png" alt="Moodboard">
-      </div>
-    </div>
-    <div class="case-block">
-      <h3>MOCKUP</h3>
-      <div class="case-box tall">
-        <img src="/assets/dmmb/mockup.png" alt="Mockup">
-      </div>
-    </div>
-    <div class="case-block">
-      <h3>RESULTADO</h3>
-      <div class="case-box tall">
-        <img src="/assets/dmmb/resultado.jpg" alt="Resultado">
-      </div>
-    </div>
-  </section>
+<section class="case-gallery reveal" aria-label="Galeria do projeto">
+  <div class="scroll-row">
+    <figure class="frame">
+      <img src="/assets/dmmb/moodboard.png" alt="Moodboard">
+      <figcaption>Moodboard — referências visuais do projeto</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="/assets/dmmb/mockup.png" alt="Mockup do livro">
+      <figcaption>Mockup — exploração de capa e apresentação</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="/assets/dmmb/resultado.jpg" alt="Resultado final">
+      <figcaption>Resultado — versão diagramada e impressa</figcaption>
+    </figure>
+  </div>
+
+  <!-- Botões de navegação -->
+  <div class="case-nav" aria-hidden="true">
+    <button class="prev" type="button" aria-label="Anterior">‹</button>
+    <button class="next" type="button" aria-label="Próximo">›</button>
+  </div>
+</section>
 
   <script src="script.js" defer></script>
 </body>
