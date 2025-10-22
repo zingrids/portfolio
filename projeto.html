@@ -40,7 +40,7 @@
     <h1 class="case-title">Diagramação</h1>
 
     <section class="case-banner">
-      <div class="banner-bg" style="background-image: url('/assets/dmmb/banner.png')"></div>
+      <div class="banner-bg" style="background-image: url('./assets/dmmb/banner.png')"></div>
     </section>
   </section>
 
@@ -60,30 +60,43 @@
     </div>
   </section>
 
-<section class="case-gallery reveal" aria-label="Galeria do projeto">
-  <div class="scroll-row">
-    <figure class="frame">
-      <img src="/assets/dmmb/moodboard.png" alt="Moodboard">
-      <figcaption>Moodboard — referências visuais do projeto</figcaption>
-    </figure>
+  <!-- ===== FLUXO DO CASE (layout conforme wireframe) ===== -->
+<section class="case-flow">
 
-    <figure class="frame">
-      <img src="/assets/dmmb/mockup.png" alt="Mockup do livro">
-      <figcaption>Mockup — exploração de capa e apresentação</figcaption>
+  <!-- 1) MOOD BOARD -->
+  <section class="flow-block block-mood">
+    <div class="copy">
+      <h2 class="flow-title left">MOOD BOARD</h2>
+      <p class="flow-desc">Durante o processo, percebi como o espaço negativo e o silêncio visual podem ser tão expressivos quanto a própria palavra. 
+        Entendi que o design de um livro de poesia não deve ilustrar o texto, mas sim respirar com ele — criar pausas, ritmo e intimidade. 
+        Essa experiência me fez enxergar o design editorial como um território de emoção e contenção.</p>
+    </div>
+    <figure class="media">
+      <img src="./assets/dmmb/moodboard.png" alt="Moodboard — referências e atmosfera" loading="lazy">
     </figure>
+  </section>
 
-    <figure class="frame">
-      <img src="/assets/dmmb/resultado.jpg" alt="Resultado final">
-      <figcaption>Resultado — versão diagramada e impressa</figcaption>
+  <!-- 2) MOCKUP -->
+  <section class="flow-block block-mock invert">
+    <figure class="media">
+      <img src="./assets/dmmb/mockup.png" alt="Mockup — exploração de capa" loading="lazy">
     </figure>
-  </div>
+    <div class="copy align-right">
+      <h2 class="flow-title right">MOCKUP</h2>
+      <p class="flow-desc">Explicação do mockup</p>
+    </div>
+  </section>
 
-  <!-- Botões de navegação -->
-  <div class="case-nav" aria-hidden="true">
-    <button class="prev" type="button" aria-label="Anterior">‹</button>
-    <button class="next" type="button" aria-label="Próximo">›</button>
-  </div>
+  <!-- 3) RESULTADO -->
+  <section class="flow-result">
+    <h2 class="flow-title left">RESULTADO</h2>
+    <figure class="media full">
+      <img src="./assets/dmmb/resultado.png" alt="Resultado final — fotografia" loading="lazy">
+    </figure>
+  </section>
+
 </section>
+
 
   <script src="script.js" defer></script>
 </body>

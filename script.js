@@ -167,50 +167,185 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
 
-// =========================
-// Galeria do case: setas prev/next
-// =========================
-(() => {
-  const gallery = document.querySelector('.case-gallery');
-  if (!gallery) return;
+/* =========================
+   i18n (PT/EN) — simples e robusto
+   ========================= */
 
-  const row = gallery.querySelector('.scroll-row');
-  const prev = gallery.querySelector('.case-nav .prev');
-  const next = gallery.querySelector('.case-nav .next');
+// 1) DICIONÁRIO
+const I18N = {
+  pt: {
+    "meta.title": "Portfólio Ingrid Lima",
 
-  if (!row || !prev || !next) return;
+    // HERO
+    "hero.title": "PORTFÓLIO",
+    "hero.subtitle": "Ingrid Lima",
 
-  // gap usado no CSS (40px). Se um dia mudar no CSS, atualize aqui também.
-  const GAP = 40;
+    // SOBRE
+    "about.title": "SOBRE MIM",
+    "about.hello": "oi,",
+    "about.thisisme": "essa sou eu",
+    "about.p1": 'Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que <em>toda boa história nasce de um olhar atento.</em>',
+    "about.p2": 'Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em>',
+    "about.p3": "Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.",
+    "about.photoAlt": "Minha foto",
 
-  const frameWidth = () => {
-    const first = row.querySelector('.frame');
-    if (!first) return 0;
-    // largura do quadro + gap para pular "um slide"
-    return Math.round(first.getBoundingClientRect().width + GAP);
-  };
+    // GALERIA
+    "gallery.title": "Ingrid’s Gallery",
+    "gallery.open.cartas": "Abrir projeto Cartas",
+    "gallery.open.born": "Abrir projeto Born",
+    "gallery.open.ordem": "Abrir projeto Ordem",
+    "gallery.open.dmmb": "Abrir projeto Devaneios",
+    "gallery.open.farma": "Abrir projeto Farmacêutico",
+    "gallery.card.cartas": "Cartas para o Amanhã",
+    "gallery.card.born": "Documentário Worikg",
+    "gallery.card.ordem": "A Ordem e o Abismo",
+    "gallery.card.dmmb": "Devaneios de Madrugada de uma Mente Bitolada",
+    "gallery.card.farma": "Farmacêutico de Primeira Viagem",
 
-  const scrollByFrame = (dir = 1) => {
-    const amount = frameWidth() * dir;
-    row.scrollBy({ left: amount, behavior: 'smooth' });
-  };
+    // CONTATO
+    "contact.title": "Vamos criar?",
+    "contact.text": 'Aberta a colaborações em <em>design, teatro e escrita</em>. Quer trocar uma ideia, enviar um briefing ou só dizer oi?',
+    "contact.ctaEmail": "Me manda um oi ;)",
+    "contact.ctaCv": "Baixar currículo",
+    "contact.socialLabel": "Redes sociais",
 
-  prev.addEventListener('click', () => scrollByFrame(-1));
-  next.addEventListener('click', () => scrollByFrame(1));
+    // FOOTER
+    "footer.credit": "© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘",
 
-  // Acessibilidade: setinhas do teclado
-  gallery.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') scrollByFrame(-1);
-    if (e.key === 'ArrowRight') scrollByFrame(1);
+    // Navegação/A11y
+    "nav.home": "Home",
+    "nav.gallery": "Galeria",
+    "nav.contact": "Contato",
+    "nav.open": "Abrir menu",
+
+    // Rótulos de botões de idioma
+    "lang.pt": "PT",
+    "lang.en": "EN",
+  },
+
+  en: {
+    "meta.title": "Ingrid Lima — Portfolio",
+
+    // HERO
+    "hero.title": "PORTFOLIO",
+    "hero.subtitle": "Ingrid Lima",
+
+    // ABOUT
+    "about.title": "ABOUT ME",
+    "about.hello": "hi,",
+    "about.thisisme": "this is me",
+    "about.p1": 'I believe design, theatre and writing are just different <em>paths</em> to tell stories — and that <em>every good story is born from an attentive gaze.</em>',
+    "about.p2": 'I work with visual and narrative creation, always seeking to translate <em>sensations into form.</em>',
+    "about.p3": "Graduated in Graphic Design and Theatre, with specialization in Branding and Digital Marketing.",
+    "about.photoAlt": "My photo",
+
+    // GALLERY
+    "gallery.title": "Ingrid’s Gallery",
+    "gallery.open.cartas": "Open project Cartas",
+    "gallery.open.born": "Open project Born",
+    "gallery.open.ordem": "Open project Ordem",
+    "gallery.open.dmmb": "Open project Devaneios",
+    "gallery.open.farma": "Open project Farmacêutico",
+    "gallery.card.cartas": "Letters for Tomorrow",
+    "gallery.card.born": "Worikg Documentary",
+    "gallery.card.ordem": "The Order and the Abyss",
+    "gallery.card.dmmb": "Dawn Ramblings of a Narrow Mind",
+    "gallery.card.farma": "First-Time Pharmacist",
+
+    // CONTACT
+    "contact.title": "Shall we create?",
+    "contact.text": 'Open to collaborations in <em>design, theatre and writing</em>. Want to chat, send a brief or just say hi?',
+    "contact.ctaEmail": "Say hello :)",
+    "contact.ctaCv": "Download resume",
+    "contact.socialLabel": "Social networks",
+
+    // FOOTER
+    "footer.credit": "© 2025 Ingrid Lima — site designed & developed by me 🌘",
+
+    "nav.home": "Home",
+    "nav.gallery": "Gallery",
+    "nav.contact": "Contact",
+    "nav.open": "Open menu",
+
+    "lang.pt": "PT",
+    "lang.en": "EN",
+  }
+};
+
+// Se tiver CV em EN, coloque o caminho aqui
+const CV_BY_LANG = {
+  pt: "./assets/curriculo-Ingrid-Lima.pdf",
+  en: "./assets/resume-Ingrid-Lima.pdf"  // troque se não existir
+};
+
+// 2) Função que aplica as traduções
+function applyI18n(lang) {
+  const dict = I18N[lang] || I18N.pt;
+
+  // textos simples
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
-  // Opcional: desabilita seta quando chegou ao início/fim
-  const toggleButtons = () => {
-    const max = row.scrollWidth - row.clientWidth - 1;
-    prev.style.opacity = row.scrollLeft <= 0 ? .35 : 1;
-    next.style.opacity = row.scrollLeft >= max ? .35 : 1;
-  };
-  row.addEventListener('scroll', toggleButtons, { passive: true });
-  window.addEventListener('resize', toggleButtons);
-  toggleButtons();
+  // textos com HTML
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const key = el.getAttribute("data-i18n-html");
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+
+  // atributos (aria-label, title, placeholder…)
+  document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    const spec = el.getAttribute("data-i18n-attr"); // ex: aria-label:nav.open;title:nav.open
+    spec.split(";").forEach(pair => {
+      const [attr, key] = pair.split(":").map(s => s && s.trim());
+      if (!attr || !key) return;
+      if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+    });
+  });
+
+  // currículo por idioma
+  const cv = document.getElementById("cv-link");
+  if (cv && CV_BY_LANG[lang]) cv.setAttribute("href", CV_BY_LANG[lang]);
+
+  // <html lang="">
+  document.documentElement.setAttribute("lang", lang);
+}
+
+// 3) Inicialização + botões
+(function initI18n(){
+  const buttons = Array.from(document.querySelectorAll(".lang-btn"));
+  if (!buttons.length) return;
+
+  // garante data-lang
+  buttons.forEach(b => {
+    if (!b.dataset.lang) b.dataset.lang = b.textContent.trim().toLowerCase();
+  });
+
+  // idioma salvo/detectado
+  let lang = localStorage.getItem("idioma");
+  if (!lang) {
+    lang = navigator.language && navigator.language.startsWith("en") ? "en" : "pt";
+    localStorage.setItem("idioma", lang);
+  }
+
+  const markActive = (l) => buttons.forEach(b => b.classList.toggle("active", b.dataset.lang === l));
+
+  // aplica na carga
+  markActive(lang);
+  applyI18n(lang);
+
+  // clique
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const next = btn.dataset.lang;
+      if (!next) return;
+      localStorage.setItem("idioma", next);
+      markActive(next);
+      applyI18n(next);
+    });
+  });
+
+  // util opcional p/ debugar no console
+  window.i18nDebug = () => ({ lang: localStorage.getItem("idioma") });
 })();

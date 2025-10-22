@@ -198,7 +198,7 @@ body { font-family: "Poppins", sans-serif; }
 .shape {
   position: absolute;
   z-index: 0;
-  background-image: url("/assets/flor.svg");
+  background-image: url("./assets/flor.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -580,81 +580,454 @@ html, body { overflow-x: hidden; }
   color: #f0f0f0;
 }
 
-/* ===== CASE GALLERY ===== */
-.case-gallery {
-  position: relative;
-  margin: 100px 0;
-  padding: 20px 10vw;
-  /* continuamos usando scroll horizontal internamente,
-     mas escondemos a barra e controlamos por botões */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;     /* IE/Edge antigo */
-  scrollbar-width: none;        /* Firefox */
-}
-.case-gallery::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-
-.scroll-row {
-  display: flex;
-  gap: 40px;
-}
-
-/* Tamanho padronizado dos quadros */
+.scroll-row { display: flex; gap: 40px; }
 .frame {
   scroll-snap-align: center;
-  flex: 0 0 clamp(280px, 70vw, 920px); /* largura responsiva, máx ~920px */
-  aspect-ratio: 16 / 9;                /* altura padronizada */
+  flex: 0 0 80%;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 0 20px #0009;
-  background: #0d0d0d;
 }
-.frame img {
+.frame img { width: 100%; height: auto; object-fit: cover; display: block; }
+
+/* ===== Flow (wireframe exact) ===== */
+.case-flow {
+  padding: 40px 6vw 120px;
+  display: grid;
+  gap: clamp(56px, 8vw, 90px);
+}
+
+.flow-block {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; /* texto / imagem */
+  align-items: start;
+  gap: clamp(18px, 3vw, 32px);
+}
+
+.flow-block.invert {
+  grid-template-columns: 1.1fr 1fr; /* imagem / texto */
+}
+
+.flow-title {
+  margin: 0 0 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: #fff;
+}
+
+.flow-title.left { text-align: left; }
+.flow-title.right { text-align: right; }
+
+.flow-desc {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: clamp(.9rem, 1.2vw, 1rem);
+  color: #dcdcdc;
+}
+
+.copy.align-right { text-align: right; }
+
+.media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 24px #0007;
+  background: #0b0b0b;
+}
+
+.media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* garante corte consistente sem distorcer */
+  object-fit: cover;
   display: block;
 }
 
-/* ===== Botões de navegação ===== */
-.case-nav {
-  pointer-events: none;        /* container não intercepta, só os botões */
-}
-.case-nav button {
-  pointer-events: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px; height: 44px;
-  border: 0; border-radius: 999px;
-  background: #111a;
-  backdrop-filter: blur(2px);
-  color: #fff; font-size: 20px; line-height: 1;
-  display: grid; place-items: center;
-  cursor: pointer;
-  box-shadow: 0 0 0 1px #222 inset, 0 6px 16px #0008;
-  transition: background .2s ease, transform .12s ease, opacity .2s ease;
-}
-.case-nav button:hover { background: #111f; }
-.case-nav button:active { transform: translateY(-50%) scale(.98); }
-
-.case-nav .prev { left: 2vw; }
-.case-nav .next { right: 2vw; }
-
-/* Esconde setas quando a tela é muito estreita (opcional) */
-@media (max-width: 480px){
-  .case-nav button { width: 38px; height: 38px; font-size: 18px; }
+.flow-result {
+  display: grid;
+  gap: 14px;
 }
 
-/* ===== Legendas ===== */
-.frame figcaption {
+.flow-result .media.full {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 24px #0007;
+  background: #0b0b0b;
+}
+
+/* responsivo */
+@media (max-width: 900px) {
+  .flow-block,
+  .flow-block.invert {
+    grid-template-columns: 1fr;
+  }
+  .copy.align-right { text-align: left; }
+  .flow-title.right { text-align: left; }
+}
+
+/* ===== RODAPÉ ===== */
+.site-footer {
+  background: #0b0b0b;
+  color: #f1f1f1;
+  padding: 100px 8vw 60px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+  margin-bottom: 60px;
+}
+
+.footer-title {
+  font-family: "Lostar", serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-text {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: .95rem;
-  color: #eaeaea;
-  background: linear-gradient(180deg, #0000, #000a);
-  padding: 10px 12px;
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
+  line-height: 1.8;
+  color: #d4d4d4;
+  max-width: 540px;
 }
 
+.footer-text em {
+  color: #C5AFD5;
+  font-style: italic;
+}
+
+.footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.btn-footer {
+  text-decoration: none;
+  background: #C5AFD5;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all .25s ease;
+}
+
+.btn-footer:hover { transform: translateY(-2px); box-shadow: 0 4px 12px #0005; }
+
+.btn-footer.outline {
+  background: transparent;
+  color: #C5AFD5;
+  border: 1.5px solid #C5AFD5;
+}
+
+.btn-footer.outline:hover {
+  background: #C5AFD5;
+  color: #000;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-links a {
+  color: #bbb;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  transition: color .2s ease;
+}
+
+.social-links a:hover { color: #fff; }
+
+.footer-bottom {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #1a1a1a;
+  padding-top: 20px;
+}
+
+@media (max-width: 800px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-actions { justify-content: center; }
+  .social-links { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 20px; }
+}
+
+/* ===== CONTATO ===== */
+.contact {
+  padding: 140px 8vw 120px;
+  background: #000;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: "Lostar", serif;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d4d4d4;
+  max-width: 640px;
+  margin: 0 auto 36px;
+}
+
+.contact-text em {
+  color: #C5AFD5;
+  font-style: italic;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== RODAPÉ ===== */
+.site-footer {
+  background: #0b0b0b;
+  text-align: center;
+  padding: 60px 8vw 40px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+
+.footer-social a {
+  color: #bbb;
+  font-size: 1.8rem;
+  transition: color .25s ease, transform .25s ease;
+}
+
+.footer-social a:hover {
+  color: #C5AFD5;
+  transform: translateY(-3px);
+}
+
+.footer-credit {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .footer-social { gap: 24px; }
+  .footer-social a { font-size: 1.6rem; }
+}
+
+/* ===== Contact Hero (gif + copy) ===== */
+.contact-hero{
+  padding: clamp(80px, 10vw, 140px) 8vw;
+  position: relative;
+}
+.ch-inner{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr; /* gif / texto */
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+  background: radial-gradient(1200px 600px at 10% 10%, #0b0b0b, #000);
+  border: 1px solid #1a1a1a;
+  border-radius: 22px;
+  padding: clamp(20px, 4vw, 40px);
+  box-shadow: 0 0 40px #000a;
+}
+
+/* enfeite — brilho suave nas bordas */
+.ch-inner::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius: 22px;
+  background: radial-gradient(600px 220px at 12% 18%, #C5AFD522, transparent 60%);
+  pointer-events:none;
+}
+
+/* GIF/arte */
+.ch-art{
+  margin: 0;
+  filter: drop-shadow(0 8px 24px #0008);
+}
+.ch-art img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;        /* remove se o gif tiver fundo transparente e você quiser sem borda */
+  background: #0f0f10;        /* evita “flash” ao carregar */
+  object-fit: contain;        /* não distorce seu pixel art */
+}
+
+/* Texto e ações */
+.ch-copy{ display:flex; flex-direction:column; gap: 16px; }
+.ch-title{
+  margin: 0;
+  font-family: "Lostar", serif;
+  font-size: clamp(2.2rem, 5.6vw, 4rem);
+  line-height: 1.05;
+  color: #fff;
+}
+.ch-text{
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d7d7d7;
+  max-width: 560px;
+}
+.ch-text em{ color:#C5AFD5; font-style: italic; }
+
+.ch-actions{ display:flex; flex-wrap:wrap; gap: 14px; margin-top: 4px; }
+.btn-solid, .btn-ghost{
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 12px 22px;
+  border-radius: 10px;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-solid{
+  background:#C5AFD5; color:#000;
+  box-shadow: 0 6px 18px #0007;
+}
+.btn-solid:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px #0008; }
+.btn-ghost{
+  background: transparent; color:#C5AFD5; border:1.5px solid #C5AFD5;
+}
+.btn-ghost:hover{ background:#C5AFD5; color:#000; }
+
+/* ícones fora do footer */
+.ch-social{
+  display:flex; gap: 18px; margin-top: 8px;
+}
+.ch-social a{
+  color:#bdbdbd; font-size: 1.6rem;
+  transition: color .2s ease, transform .2s ease;
+}
+.ch-social a:hover{ color:#C5AFD5; transform: translateY(-2px); }
+
+/* responsivo */
+@media (max-width: 980px){
+  .ch-inner{ grid-template-columns: 1fr; }
+  .ch-copy{ align-items: center; text-align: center; }
+  .ch-text{ max-width: 620px; }
+  .ch-social{ justify-content: center; }
+}
+
+/* ===== Halo lilás + card com cara de Figma ===== */
+
+/* cria o halo “atrás” da seção */
+.contact-hero{ position: relative; overflow: visible; }
+.contact-hero::before{
+  content:"";
+  position:absolute; inset:-60px;
+  background:
+    radial-gradient(420px 220px at 18% 30%, rgba(197,175,213,.35), transparent 60%),
+    radial-gradient(360px 180px at 82% 70%, rgba(197,175,213,.22), transparent 60%);
+  filter: blur(18px);
+  pointer-events:none;
+  z-index: 0;
+}
+
+/* deixa o bloco interno com “card” arredondado, luz e profundidade */
+.ch-inner{
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #141415 0%, #0b0b0b 100%);
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 22px 60px #000a;
+}
+.ch-inner::after{
+  content:"";
+  position:absolute; inset:-1px; border-radius:inherit;
+  background: linear-gradient(180deg, #C5AFD5 0%, transparent 55%);
+  opacity: .10; pointer-events:none;
+}
+
+/* ===== Estrelinhas (leve e sutil) ===== */
+.ch-stars{ position:absolute; inset: -20px; z-index: 0; pointer-events:none; }
+.ch-stars::before,
+.ch-stars::after{
+  content:""; position:absolute; left:0; top:0;
+  width:2px; height:2px; background:#fff; border-radius:50%;
+  opacity:.75; filter: drop-shadow(0 0 6px rgba(197,175,213,.55));
+}
+
+/* grupinhos de estrelas pequenas */
+.ch-stars::before{
+  box-shadow:
+    6% 10% 0 0 #fff,
+    12% 32% 0 0 #fff,
+    22% 18% 0 0 #fff,
+    38% 8%  0 0 #fff,
+    44% 26% 0 0 #fff,
+    58% 14% 0 0 #fff,
+    72% 28% 0 0 #fff,
+    86% 12% 0 0 #fff,
+    78% 36% 0 0 #fff,
+    28% 40% 0 0 #fff;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+
+/* algumas maiores, com outro ritmo */
+.ch-stars::after{
+  width:3px; height:3px; opacity:.6;
+  box-shadow:
+    18% 46% 0 0 #fff,
+    64% 44% 0 0 #fff,
+    82% 52% 0 0 #fff,
+    32% 56% 0 0 #fff,
+    10% 62% 0 0 #fff;
+  animation: twinkle 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes twinkle{
+  from{ transform: translateY(0); opacity:.6; }
+  to  { transform: translateY(-3px); opacity:1; }
+}
+
+/* ===== Entrada suave do card (usa sua classe .reveal) ===== */
+.contact-hero.reveal .ch-inner{
+  opacity: 0; transform: translateY(14px) scale(.985);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2,.65,.2,1);
+}
+.contact-hero.reveal.in .ch-inner{
+  opacity: 1; transform: none;
+}
+
+/* (opcional) bordas grandes como no seu Figma dos cards */
+.ch-art img{ border-radius: 20px; }

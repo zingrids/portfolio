@@ -1,101 +1,148 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/flor.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <title>Portfólio Ingrid Lima</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="./assets/flor.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <title data-i18n="meta.title">Portfólio Ingrid Lima</title>
   </head>
-  
+
   <body>
+    <!-- IDIOMA -->
     <header class="idioma">
-      <button class="lang-btn active">PT</button>
-      <button class="lang-btn">EN</button>
+      <button class="lang-btn active" data-lang="pt" data-i18n="lang.pt">PT</button>
+      <button class="lang-btn" data-lang="en" data-i18n="lang.en">EN</button>
     </header>
 
     <!-- HERO -->
-<main class="hero" id="top">
-  <!-- shapes de fundo (parallax) -->
-  <div class="shape s1" data-speed="-0.2" aria-hidden="true"></div>
-  <div class="shape s2" data-speed="0.35" aria-hidden="true"></div>
-  <div class="shape s3" data-speed="0.1" aria-hidden="true"></div>
-  <!-- conteúdo central -->
-  <div class="hero-wrap">
-    <h1 class="hero-title reveal">PORTFÓLIO</h1>
-    <p class="hero-sub reveal">Ingrid Lima</p>
+    <main class="hero" id="top">
+      <!-- shapes de fundo (parallax) -->
+      <div class="shape s1" data-speed="-0.2" aria-hidden="true"></div>
+      <div class="shape s2" data-speed="0.35" aria-hidden="true"></div>
+      <div class="shape s3" data-speed="0.1" aria-hidden="true"></div>
 
-    <!-- navegação por âncoras (opcional agora) 
-    <nav class="hero-anchors reveal" aria-label="Seções">
-      <a href="#design">Design</a>
-      <a href="#teatro">Teatro</a>
-      <a href="#escrita">Escrita</a>
-    </nav>-->
-  </div>
-</main>
+      <!-- conteúdo central -->
+      <div class="hero-wrap">
+        <h1 class="hero-title reveal" data-i18n="hero.title">PORTFÓLIO</h1>
+        <p class="hero-sub reveal" data-i18n="hero.subtitle">Ingrid Lima</p>
 
-<section class="about" id="sobre">
-  <div class="about-wrap">
-    <h2 class="about-title reveal">SOBRE MIM</h2>
+        <!-- navegação por âncoras (opcional)
+        <nav class="hero-anchors reveal" aria-label="Seções">
+          <a href="#design" data-i18n="hero.anchor.design">Design</a>
+          <a href="#teatro" data-i18n="hero.anchor.theatre">Teatro</a>
+          <a href="#escrita" data-i18n="hero.anchor.writing">Escrita</a>
+        </nav>-->
+      </div>
+    </main>
 
-    <div class="about-content">
-      <div class="about-text left reveal">
-        <p><span class="hand">oi,</span> essa sou eu</p>
-        <p>Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que <em>toda boa história nasce de um olhar atento.</em></p>
+    <!-- SOBRE -->
+    <section class="about" id="sobre">
+      <div class="about-wrap">
+        <h2 class="about-title reveal" data-i18n="about.title">SOBRE MIM</h2>
+
+        <div class="about-content">
+          <div class="about-text left reveal">
+            <p><span class="hand" data-i18n="about.hello">oi,</span> <span data-i18n="about.thisisme">essa sou eu</span></p>
+            <p data-i18n-html="about.p1">
+              Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que
+              <em>toda boa história nasce de um olhar atento.</em>
+            </p>
+          </div>
+
+          <div class="about-photo reveal">
+            <img src="./assets/foto-ingrid.png" alt="Minha foto" data-i18n-attr="alt:about.photoAlt" />
+          </div>
+
+          <div class="about-text right reveal">
+            <p data-i18n-html="about.p2">
+              Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em>
+            </p>
+            <p data-i18n="about.p3">Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="about-photo reveal">
-        <img src="/assets/foto-ingrid.png" alt="Minha Foto :)" />
+      <!-- SETAS decorativas -->
+      <img src="./assets/seta-esq-sup.svg" alt="" class="arrow a-left-top reveal" />
+      <img src="./assets/seta-esq-sup.svg" alt="" class="arrow a-right-top reveal" />
+      <img src="./assets/seta-esq-inf.svg" alt="" class="arrow a-left-bottom reveal" />
+      <img src="./assets/seta-dir-inf.svg" alt="" class="arrow a-right-bottom reveal" />
+    </section>
+
+    <!-- GALERIA -->
+    <section class="gallery" id="galeria">
+      <h2 class="gallery-title reveal" data-i18n="gallery.title">Ingrid’s Gallery</h2>
+
+      <div class="masonry">
+        <a class="card reveal" href="projeto.html?slug=cartas" data-i18n-attr="aria-label:gallery.open.cartas" aria-label="Abrir projeto Cartas">
+          <img src="./assets/cartas.png" alt="Capa do projeto Cartas" loading="lazy" />
+          <span class="card-caption" data-i18n="gallery.card.cartas">Cartas para o Amanhã</span>
+        </a>
+
+        <a class="card reveal" href="projeto.html?slug=born" data-i18n-attr="aria-label:gallery.open.born" aria-label="Abrir projeto Born">
+          <img src="./assets/worikg.png" alt="Documentário Worikg" loading="lazy" />
+          <span class="card-caption" data-i18n="gallery.card.born">Documentário Worikg</span>
+        </a>
+
+        <a class="card reveal" href="projeto.html?slug=ordem" data-i18n-attr="aria-label:gallery.open.ordem" aria-label="Abrir projeto Ordem">
+          <img src="./assets/teatro.png" alt="A Ordem e o Abismo" loading="lazy" />
+          <span class="card-caption" data-i18n="gallery.card.ordem">A Ordem e o Abismo</span>
+        </a>
+
+        <a class="card reveal" href="projeto.html?slug=dmmb" data-i18n-attr="aria-label:gallery.open.dmmb" aria-label="Abrir projeto Devaneios">
+          <img src="./assets/dmmb.png" alt="Devaneios de Madrugada" loading="lazy" />
+          <span class="card-caption" data-i18n="gallery.card.dmmb">Devaneios de Madrugada de uma Mente Bitolada</span>
+        </a>
+
+        <a class="card reveal" href="projeto.html?slug=farma" data-i18n-attr="aria-label:gallery.open.farma" aria-label="Abrir projeto Farmacêutico">
+          <img src="./assets/farma.png" alt="Farmacêutico de Primeira Viagem" loading="lazy" />
+          <span class="card-caption" data-i18n="gallery.card.farma">Farmacêutico de Primeira Viagem</span>
+        </a>
       </div>
+    </section>
 
-      <div class="about-text right reveal">
-        <p>Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em></p>
-        <p>Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.</p>
+    <!-- CONTATO (hero final) -->
+    <section class="contact-hero reveal" id="contato">
+      <!-- enfeites: halo + estrelas -->
+      <span class="ch-stars" aria-hidden="true"></span>
+
+      <div class="ch-inner">
+        <!-- Arte / GIF decorativo -->
+        <figure class="ch-art" aria-hidden="true">
+          <img src="./assets/gif/ingrid-pixel.gif" alt="" />
+        </figure>
+
+        <!-- Texto e ações -->
+        <div class="ch-copy">
+          <h2 class="ch-title" data-i18n="contact.title">Vamos criar?</h2>
+
+          <p class="ch-text" data-i18n-html="contact.text">
+            Aberta a colaborações em <em>design, teatro e escrita</em>. Quer trocar uma ideia, enviar um briefing ou só dizer oi?
+          </p>
+
+          <div class="ch-actions">
+            <a href="mailto:ingridrsflima@gmail.com" class="btn-solid" data-i18n="contact.ctaEmail">Me manda um oi ;)</a>
+            <a id="cv-link" href="./assets/curriculo-Ingrid-Lima.pdf" download class="btn-ghost" data-i18n="contact.ctaCv">Baixar currículo</a>
+          </div>
+
+          <!-- Ícones das redes (fora do footer) -->
+          <nav class="ch-social" aria-label="Redes sociais" data-i18n-attr="aria-label:contact.socialLabel">
+            <a href="https://www.linkedin.com/in/ingridrsflima" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.behance.net/ingridrsflima" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+            <a href="https://github.com/zingrids" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/ingrids.lima" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </nav>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-    <!-- SETAS -->
-<img src="/assets/seta-esq-sup.svg" alt="" class="arrow a-left-top reveal">
-<img src="/assets/seta-esq-sup.svg" alt="" class="arrow a-right-top reveal">
-<img src="/assets/seta-esq-inf.svg" alt="" class="arrow a-left-bottom reveal">
-<img src="/assets/seta-dir-inf.svg" alt="" class="arrow a-right-bottom reveal">
-</section>
-
-<section class="gallery" id="galeria">
-  <h2 class="gallery-title reveal">Ingrid’s Gallery</h2>
-
-  <!-- Masonry (apenas exemplos, troque as imagens e links) -->
-  <div class="masonry">
-    <a class="card reveal" href="projeto.html?slug=cartas" aria-label="Abrir projeto Cartas">
-      <img src="/assets/cartas.png" alt="Capa do projeto Cartas" loading="lazy">
-      <span class="card-caption">Cartas para o Amanhã</span>
-    </a>
-
-    <a class="card reveal" href="projeto.html?slug=born" aria-label="Abrir projeto Born">
-      <img src="/assets/worikg.png" alt="Documentário Worikg">
-      <span class="card-caption">Documentário Worikg</span>
-    </a>
-
-    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
-      <img src="/assets/teatro.png" alt="A Ordem e o Abismo">
-      <span class="card-caption">A Ordem e o Abismo</span>
-    </a>
-
-    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
-      <img src="/assets/dmmb.png" alt="Devaneios de Madrugada">
-      <span class="card-caption">Devaneios de Madrugada de uma Mente Bitolada</span>
-    </a>
-
-    <a class="card reveal" href="projeto.html?slug=ordem" aria-label="Abrir projeto Ordem">
-      <img src="/assets/farma.png" alt="Farmaceutico de Primeira Viagem">
-      <span class="card-caption">Farmacêutico de Primeira Viagem</span>
-    </a>
-    <!-- duplique <a class="card">…</a> para mais itens -->
-  </div>
-</section>
-
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p class="footer-credit" data-i18n="footer.credit">© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘</p>
+    </footer>
 
     <script src="script.js" defer></script>
   </body>
