@@ -312,52 +312,6 @@ body { font-family: "Poppins", sans-serif; }
   }
 }
 
-/* ====== SETAS DO SOBRE MIM ====== */
-.arrow {
-  position: absolute;
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* 🡐 seta superior esquerda (apontando pro "oiê") */
-.a-left-top {
-  left: 29%;
-  top: 48%;
-  rotate: 125deg;
-}
-
-/* 🡒 seta superior direita (pro texto de "sensações em forma") */
-.a-right-top {
-  right: 30%;
-  top: 40%;
-  width: 190px;
-  height: 100px;
-
-}
-
-/* 🡓 seta inferior direita (pro texto de "Branding e Marketing Digital") */
-.a-right-bottom {
-  right: 35%;
-  bottom: 22%;
-  width: 160px;
-  height: 120px;
-  rotate: 100deg;
-}
-
-/* 🡑 seta inferior esquerda (pro texto de "toda boa história nasce de um olhar atento") */
-.a-left-bottom {
-  left: 30%;
-  bottom: 10%;
-  width: 160px;
-  height: 120px;
-  rotate: 180deg;
-}
-
-/* responsivo */
-@media (max-width: 900px) {
-  .arrow { display: none; }
-}
 
 /* ===== ANIMAÇÃO DO SOBRE MIM ===== */
 .about-title.reveal,
@@ -1031,3 +985,24 @@ html, body { overflow-x: hidden; }
 
 /* (opcional) bordas grandes como no seu Figma dos cards */
 .ch-art img{ border-radius: 20px; }
+
+/* ===== Ajustes mobile extras ===== */
+@media (max-width: 900px){
+  /* as setas somem (pra não poluir na tela pequena) */
+  .arrow { display: none; }
+
+  /* sobre mim: 1 coluna e imagens menores */
+  .about-content { grid-template-columns: 1fr; text-align: center; }
+  .about-photo img { width: min(82vw, 300px); }
+
+  /* hero: títulos proporcionais */
+  .hero-title { font-size: clamp(40px, 14vw, 64px); line-height: 1; }
+  .hero-sub   { font-size: clamp(28px, 10vw, 48px); margin-top: 0; }
+}
+
+/* galeria: garante 1 coluna quando estreitar de verdade */
+@media (max-width: 600px){
+  .masonry { columns: 1; }
+  .gallery-title { font-size: clamp(32px, 9vw, 48px); }
+}
+
