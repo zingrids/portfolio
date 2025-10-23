@@ -349,3 +349,59 @@ function applyI18n(lang) {
   // util opcional p/ debugar no console
   window.i18nDebug = () => ({ lang: localStorage.getItem("idioma") });
 })();
+
+// ===== Botão de progresso + voltar ao topo (robusto) =====
+(() => {
+  const btn = document.getElementById('scrollTop');
+  if (!btn) return;
+
+  const bar = btn.querySelector('.bar');
+  const radius = 18;
+  const circumference = 2 * Math.PI * radius;
+  bar.style.strokeDasharray = `${circumference}`;
+  bar.style.strokeDashoffset = `${circumference}`;
+
+  const thresholdShow = 80;   // aparece depois de ~80px
+  const thresholdReady = 0.98; // seta aparece quando chega ~98% do fim
+  const update = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+
+    // mostra em páginas curtas também
+    if (scrollTop > thresholdShow || maxScroll < 400) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+
+    const offset = circumference * (1 - progress);
+    bar.style.strokeDashoffset = `${offset}`;
+
+    btn.classList.toggle('ready', progress >= thresholdReady);
+  };
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // inicializa
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+})();
+
+// BOTÃO "VOLTAR AO TOPO" (aparece ao rolar)
+(() => {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY || document.documentElement.scrollTop;
+    btn.classList.toggle('visible', scrolled > 400);
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fontes e CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../../assets/estrela.svg">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <title>Linha de Embalagens</title>
+</head>
+<body>
+  <!-- TÍTULO + BANNER FULL -->
+  <section class="case-hero reveal">
+    <h1 class="case-title">Embalagens</h1>
+
+    <section class="case-banner">
+      <!-- imagens LOCAIS do case -->
+      <div class="banner-bg" style="background-image: url('./banner.png')"></div>
+    </section>
+  </section>
+
+  <!-- TRINCA: SOBRE / BRIEFING / DESENVOLVIMENTO -->
+  <section class="case-grid">
+    <div class="case-col reveal">
+      <h3>SOBRE</h3>
+      <p>A marca estava lançando um novo produto e precisava de embalagens que
+        transmitissem a marca.</p>
+    </div>
+    <div class="case-col reveal">
+      <h3>BRIEFING</h3>
+      <p>Pastas saborizantes para sorveteiros: embalagens que se destacassem e
+        mostrassem qualidade ao mesmo tempo.</p>
+    </div>
+    <div class="case-col reveal">
+      <h3>DESENVOLVIMENTO</h3>
+      <p>Criação de uma estrutura modular de rótulos (logotipo fixo, faixa de sabor variável).
+
+Paleta cromática baseada em matizes naturais dos sabores e tons complementares pra destaque.
+
+Aplicação de faixas metálicas sutis nas versões premium (nozes, pistacchio, nocciola).
+
+Hierarquia de leitura: sabor → tipo → peso.
+
+Testes de legibilidade em impressão e redução.</p>
+    </div>
+  </section>
+
+  <!-- FLUXO DO CASE -->
+  <section class="case-flow">
+
+    <!-- 2) MOCKUP -->
+    <section class="flow-block block-mock invert">
+      <figure class="media">
+        <img src="./mockup.png" alt="Mockup — exploração de capa" loading="lazy">
+      </figure>
+      <div class="copy align-right">
+        <h2 class="flow-title right">MOCKUP</h2>
+        <p class="flow-desc">O mockup evidencia o caráter sensorial do projeto, traduzindo visualmente o convite à pausa e à contemplação que o livro propõe. A ambientação reforça o conceito de intimidade e respiração entre texto e silêncio.</p>
+      </div>
+    </section>
+
+      <!-- FLUXO DO CASE -->
+  <section class="case-flow">
+
+    <!-- BLOCO 1 — LINHA DE PASTAS -->
+    <section class="flow-block block-mood">
+      <div class="copy">
+        <h2 class="flow-title left">Linha de pastas saborizantes</h2>
+        <p class="flow-desc">
+          Sistema de embalagens com unidade de marca e variação de sabores por
+          cor, mantendo consistência tipográfica e destaque para a categoria.
+        </p>
+        <a href="https://vabenesorveteria.com.br/portfolio-category/pastas-saborizantes/" target="_blank" class="btn-outline">
+      Confira a linha completa no site
+    </a>
+      </div>
+      <figure class="media">
+        <!-- imagem da linha (aquela com vários potes) -->
+        <img src="./resultado.png" alt="Linha de pastas saborizantes Vabene" loading="lazy">
+      </figure>
+      
+    </section>
+
+
+
+<!-- BOTÃO FIXO: VOLTAR AO TOPO -->
+<button id="backToTop" aria-label="Voltar ao topo">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+
+<!--FOOTER-->
+<footer class="case-minifooter">
+  <nav class="case-minifooter-nav" aria-label="Navegação final">
+    <a href="../../index.html#top" class="ft-link">
+      <i class="fa-solid fa-house"></i><span>Home</span>
+    </a>
+    <span class="dot" aria-hidden="true">•</span>
+    <a href="../../index.html#galeria" class="ft-link">
+      <i class="fa-solid fa-images"></i><span>Galeria</span>
+    </a>
+  </nav>
+  <small class="ft-copy">© 2025 Ingrid Lima</small>
+</footer>
+
+<!-- botão fixo de voltar ao topo (usa o mesmo JS já do site) -->
+<button id="scrollTop" class="progress-top" aria-label="Voltar ao topo">
+  <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+    <circle class="bg"  cx="22" cy="22" r="18"></circle>
+    <circle class="bar" cx="22" cy="22" r="18"></circle>
+  </svg>
+  <span class="chevron" aria-hidden="true">
+    <!-- Lucide chevron-up -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </span>
+</button>
+
+  <!-- Scripts globais (na raiz) -->
+  <script src="../../script.js" defer></script>
+</body>
+</html>

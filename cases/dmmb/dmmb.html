@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fontes e CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../../assets/estrela.svg">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <title>Devaneios de Madrugada</title>
+</head>
+<body>
+  <!-- TÍTULO + BANNER FULL -->
+  <section class="case-hero reveal">
+    <h1 class="case-title">Diagramação</h1>
+
+    <section class="case-banner">
+      <!-- imagens LOCAIS do case -->
+      <div class="banner-bg" style="background-image: url('./banner.png')"></div>
+    </section>
+  </section>
+
+  <!-- TRINCA: SOBRE / BRIEFING / DESENVOLVIMENTO -->
+  <section class="case-grid">
+    <div class="case-col reveal">
+      <h3>SOBRE</h3>
+      <p>Devaneios de Madrugada de uma Mente Bitolada é uma coletânea de poesias que atravessa emoções sutis e intensas, explorando a delicadeza dos sentimentos humanos. O livro propõe uma leitura sensorial, onde palavra, silêncio e espaço visual se entrelaçam em uma experiência estética e introspectiva.</p>
+    </div>
+    <div class="case-col reveal">
+      <h3>BRIEFING</h3>
+      <p>O projeto nasceu do desejo de registrar pensamentos e sensações noturnas em formato poético, transformando experiências pessoais em linguagem visual e literária. O desafio foi criar uma identidade que equilibrasse emoção e racionalidade, traduzindo o tom íntimo das poesias em um design que respirasse delicadeza e silêncio.</p>
+    </div>
+    <div class="case-col reveal">
+      <h3>DESENVOLVIMENTO</h3>
+      <p>O processo envolveu a escolha de uma tipografia fluida e contemporânea, capaz de refletir a sensibilidade dos textos, e um grid minimalista que privilegia o espaço em branco como elemento expressivo. A paleta monocromática reforça o caráter introspectivo, enquanto os detalhes sutis — como linhas finas e pequenos ícones — criam um ritmo visual que acompanha o respiro poético de cada página.</p>
+    </div>
+  </section>
+
+  <!-- FLUXO DO CASE -->
+  <section class="case-flow">
+
+    <!-- 1) MOOD BOARD -->
+    <section class="flow-block block-mood">
+      <div class="copy">
+        <h2 class="flow-title left">MOOD BOARD</h2>
+        <p class="flow-desc">
+          Durante o processo, percebi como o espaço negativo e o silêncio visual podem ser tão expressivos quanto a própria palavra.
+          Entendi que o design de um livro de poesia não deve ilustrar o texto, mas sim respirar com ele — criar pausas, ritmo e intimidade.
+          Essa experiência me fez enxergar o design editorial como um território de emoção e contenção.
+        </p>
+      </div>
+      <figure class="media">
+        <img src="./moodboard.png" alt="Moodboard — referências e atmosfera" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- 2) MOCKUP -->
+    <section class="flow-block block-mock invert">
+      <figure class="media">
+        <img src="./mockup.png" alt="Mockup — exploração de capa" loading="lazy">
+      </figure>
+      <div class="copy align-right">
+        <h2 class="flow-title right">MOCKUP</h2>
+        <p class="flow-desc">O mockup evidencia o caráter sensorial do projeto, traduzindo visualmente o convite à pausa e à contemplação que o livro propõe. A ambientação reforça o conceito de intimidade e respiração entre texto e silêncio.</p>
+      </div>
+    </section>
+
+    <!-- 3) RESULTADO -->
+    <section class="flow-result">
+      <h2 class="flow-title left">RESULTADO</h2>
+      <figure class="media full">
+        <img src="./resultado.png" alt="Resultado final — fotografia" loading="lazy">
+      </figure>
+    </section>
+  </section>
+
+
+
+<!-- BOTÃO FIXO: VOLTAR AO TOPO -->
+<button id="backToTop" aria-label="Voltar ao topo">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+
+<!--FOOTER-->
+<footer class="case-minifooter">
+  <nav class="case-minifooter-nav" aria-label="Navegação final">
+    <a href="../../index.html#top" class="ft-link">
+      <i class="fa-solid fa-house"></i><span>Home</span>
+    </a>
+    <span class="dot" aria-hidden="true">•</span>
+    <a href="../../index.html#galeria" class="ft-link">
+      <i class="fa-solid fa-images"></i><span>Galeria</span>
+    </a>
+  </nav>
+  <small class="ft-copy">© 2025 Ingrid Lima</small>
+</footer>
+
+<!-- botão fixo de voltar ao topo (usa o mesmo JS já do site) -->
+<button id="scrollTop" class="progress-top" aria-label="Voltar ao topo">
+  <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+    <circle class="bg"  cx="22" cy="22" r="18"></circle>
+    <circle class="bar" cx="22" cy="22" r="18"></circle>
+  </svg>
+  <span class="chevron" aria-hidden="true">
+    <!-- Lucide chevron-up -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </span>
+</button>
+
+  <!-- Scripts globais (na raiz) -->
+  <script src="../../script.js" defer></script>
+</body>
+</html>
