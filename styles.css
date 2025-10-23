@@ -1006,34 +1006,6 @@ html, body { overflow-x: hidden; }
   .gallery-title { font-size: clamp(32px, 9vw, 48px); }
 }
 
-/* ===== Scroll-to-top button ===== */
-#scrollTop {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 50%;
-  background: #C5AFD5;
-  color: #000;
-  font-size: 1.8rem;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s ease, transform .3s ease;
-  z-index: 1000;
-  box-shadow: 0 0 15px #0008;
-}
-#scrollTop:hover {
-  transform: scale(1.1);
-  background: #fff;
-}
-#scrollTop.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* ===== Scroll progress + back-to-top (força prioridade) ===== */
 #scrollTop.progress-top{
   position: fixed;
