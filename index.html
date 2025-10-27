@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="./assets/flor.svg" />
+    <link href="https://fonts.cdnfonts.com/css/lostar" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <title data-i18n="meta.title">Portfólio Ingrid Lima</title>
@@ -29,48 +30,110 @@
         <h1 class="hero-title reveal" data-i18n="hero.title">PORTFÓLIO</h1>
         <p class="hero-sub reveal" data-i18n="hero.subtitle">Ingrid Lima</p>
 
-        <!-- navegação por âncoras (opcional)
+        <!-- navegação por âncoras -->
         <nav class="hero-anchors reveal" aria-label="Seções">
-          <a href="#design" data-i18n="hero.anchor.design">Design</a>
-          <a href="#teatro" data-i18n="hero.anchor.theatre">Teatro</a>
-          <a href="#escrita" data-i18n="hero.anchor.writing">Escrita</a>
-        </nav>-->
+          <a href="#skills">Skills</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#contato">Contato</a>
+        </nav>
       </div>
     </main>
 
-    <!-- SOBRE -->
-    <section class="about" id="sobre">
-      <div class="about-wrap">
-        <h2 class="about-title reveal" data-i18n="about.title">SOBRE MIM</h2>
+<!-- SOBRE -->
+<section class="about about-v2" id="sobre">
+  <div class="about-wrap">
+    <h2 class="about-title reveal" data-i18n="about.title">SOBRE MIM</h2>
 
-        <div class="about-content">
-          <div class="about-text left reveal">
-            <p><span class="hand" data-i18n="about.hello">oi,</span> <span data-i18n="about.thisisme">essa sou eu</span></p>
-            <p data-i18n-html="about.p1">
-              Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que
-              <em>toda boa história nasce de um olhar atento.</em>
-            </p>
-          </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="about-hello reveal">
+          <span class="hand" data-i18n="about.hello">oiê,</span>
+          <span data-i18n="about.thisisme">essa sou eu</span>
+        </p>
 
-          <div class="about-photo reveal">
-            <img src="./assets/foto-ingrid.png" alt="Minha foto" data-i18n-attr="alt:about.photoAlt" />
-          </div>
-
-          <div class="about-text right reveal">
-            <p data-i18n-html="about.p2">
-              Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em>
-            </p>
-            <p data-i18n="about.p3">Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.</p>
-          </div>
-        </div>
+        <p class="reveal" data-i18n-html="about.p1">…</p>
+        <p class="reveal" data-i18n-html="about.p2">…</p>
+        <p class="reveal" data-i18n="about.p3">…</p>
       </div>
 
-      <!-- SETAS decorativas 
-      <img src="./assets/seta-esq-sup.svg" alt="" class="arrow a-left-top reveal" />
-      <img src="./assets/seta-esq-sup.svg" alt="" class="arrow a-right-top reveal" />
-      <img src="./assets/seta-esq-inf.svg" alt="" class="arrow a-left-bottom reveal" />
-      <img src="./assets/seta-dir-inf.svg" alt="" class="arrow a-right-bottom reveal" />-->
-    </section>
+      <figure class="about-photo reveal">
+        <img src="./assets/foto-ingrid.png" alt="Retrato de Ingrid Lima" data-i18n-attr="alt:about.photoAlt"/>
+      </figure>
+    </div>
+  </div>
+</section>
+
+    <!--SKILLS-->
+    <section class="skills" id="skills">
+
+      <img src="./assets/flower-left.svg" alt="" class="bg-flower left">
+      <img src="./assets/flower-right.svg" alt="" class="bg-flower right">
+
+
+  <h2 class="skills-title reveal">Skills</h2>
+
+  <div class="skills-grid reveal">
+    <div class="skill">
+      <div class="circle" data-percent="85">
+        <img src="./assets/icons/figma.svg" alt="Figma" />
+      </div>
+      <h3>Figma</h3>
+      <p>Intermediário</p>
+    </div>
+    <div class="skill">
+      <div class="circle" data-percent="90">
+        <img src="./assets/icons/ps.svg" alt="Photoshop" />
+      </div>
+      <h3>Photoshop</h3>
+      <p>Avançado</p>
+    </div>
+    <div class="skill">
+      <div class="circle" data-percent="80">
+        <img src="./assets/icons/ai.svg" alt="Illustrator" />
+      </div>
+      <h3>Illustrator</h3>
+      <p>Avançado</p>
+    </div>
+    <div class="skill">
+      <div class="circle" data-percent="70">
+        <img src="./assets/icons/id.svg" alt="InDesign" />
+      </div>
+      <h3>InDesign</h3>
+      <p>Intermediário</p>
+    </div>
+    <div class="skill">
+      <div class="circle" data-percent="75">
+        <img src="./assets/icons/capcut.svg" alt="CapCut" />
+      </div>
+      <h3>CapCut</h3>
+      <p>Intermediário</p>
+    </div>
+  </div>
+
+  <div class="fav-projects reveal">
+    <img src="./assets/icons/tools.svg" alt="Ferramentas favoritas" class="fav-icon" />
+    <h3>Projetos favoritos</h3>
+    <ul>
+      <li>Criação</li>
+      <li>Escrita</li>
+      <li>Branding</li>
+      <li>Eventos</li>
+      <li>UI/UX</li>
+    </ul>
+  </div>
+
+  <div class="fav-desc">
+  <h4>Lorem ipsum</h4>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Aliquam lacinia dolor sit amet lorem, ac mollis urna malesuada in. 
+    Quisque sed cursus mi.
+  </p>
+</div>
+
+</section>
+
+
 
     <!-- GALERIA -->
     <section class="gallery" id="galeria">
@@ -79,32 +142,30 @@
       <div class="masonry">
         <a class="card reveal" href="./cases/dmmb/dmmb.html" data-i18n-attr="aria-label:gallery.open.dmmb" aria-label="Abrir projeto Devaneios">
           <img src="./cases/dmmb/capa.png" alt="Devaneios de Madrugada" loading="lazy" />
-          <span class="card-caption" data-i18n="gallery.card.dmmb">Devaneios de Madrugada de uma Mente Bitolada</span>
+          <span class="card-caption" data-i18n="gallery.card.dmmb">Diagramação | Devaneios de Madrugada</span>
         </a>
 
-        <a class="card reveal" href="./cases/worik/worikg.html" aria-label="Abrir projeto NOME-DO-PROJETO">
+        <a class="card reveal" href="./cases/worik/worikg.html" aria-label="Abrir projeto Worikg">
           <img src="./cases/worik/capa.png" alt="Capa do projeto Worikg" loading="lazy">
           <span class="card-caption">Branding | Documentário Worikg</span>
         </a>
-        <a class="card reveal" href="./cases/pasta-sab/pasta-sab.html" aria-label="Abrir projeto NOME-DO-PROJETO">
+        
+        <a class="card reveal" href="./cases/pasta-sab/pasta-sab.html" aria-label="Abrir projeto Pastas saborizantes">
           <img src="./cases/pasta-sab/capa.png" alt="Capa do projeto Pastas saborizantes" loading="lazy">
-          <span class="card-caption">Branding | Documentário Worikg</span>
+          <span class="card-caption">Embalagens | Pastas saborizantes</span>
         </a>
       </div>
     </section>
 
     <!-- CONTATO (hero final) -->
     <section class="contact-hero reveal" id="contato">
-      <!-- enfeites: halo + estrelas -->
       <span class="ch-stars" aria-hidden="true"></span>
 
       <div class="ch-inner">
-        <!-- Arte / GIF decorativo -->
         <figure class="ch-art" aria-hidden="true">
           <img src="./assets/gif/ingrid-pixel.gif" alt="" />
         </figure>
 
-        <!-- Texto e ações -->
         <div class="ch-copy">
           <h2 class="ch-title" data-i18n="contact.title">Vamos criar?</h2>
 
@@ -117,12 +178,10 @@
             <a id="cv-link" href="./assets/curriculo-Ingrid-Lima.pdf" download class="btn-ghost" data-i18n="contact.ctaCv">Baixar currículo</a>
           </div>
 
-          <!-- Ícones das redes (fora do footer) -->
           <nav class="ch-social" aria-label="Redes sociais" data-i18n-attr="aria-label:contact.socialLabel">
-            <a href="https://www.linkedin.com/in/ingridrsflima" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.behance.net/ingridrsflima" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+            <a href="https://www.linkedin.com/in/ingridrfslima" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.behance.net/ingridslima" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
             <a href="https://github.com/zingrids" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.instagram.com/ingrids.lima" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </nav>
         </div>
       </div>
@@ -133,21 +192,19 @@
       <p class="footer-credit" data-i18n="footer.credit">© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘</p>
     </footer>
 
-<button id="scrollTop" class="progress-top" aria-label="Voltar ao topo">
-  <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
-    <circle class="bg"  cx="22" cy="22" r="18"></circle>
-    <circle class="bar" cx="22" cy="22" r="18"></circle>
-  </svg>
-  <span class="chevron" aria-hidden="true">
-    <!-- Lucide chevron-up -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6"/>
-    </svg>
-  </span>
-</button>
-
+    <button id="scrollTop" class="progress-top" aria-label="Voltar ao topo">
+      <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+        <circle class="bg"  cx="22" cy="22" r="18"></circle>
+        <circle class="bar" cx="22" cy="22" r="18"></circle>
+      </svg>
+      <span class="chevron" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m18 15-6-6-6 6"/>
+        </svg>
+      </span>
+    </button>
 
     <script src="script.js" defer></script>
   </body>

@@ -405,3 +405,11 @@ function applyI18n(lang) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
+
+
+// ANIMAÇÃO DO SKILLS
+
+document.querySelectorAll('.circle').forEach(circle => {
+  const percent = circle.dataset.percent;
+  circle.style.setProperty('--percent', percent);
+});

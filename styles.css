@@ -229,154 +229,424 @@ body { font-family: "Poppins", sans-serif; }
 .hero-anchors.reveal { transition-delay: .16s; }
 
 /* ====== SOBRE MIM ====== */
-.about {
-  padding: 120px 8vw;
-  position: relative;
-  overflow: visible;
-}
+.about-v2{ position:relative; padding: 120px 8vw 80px; }
+.about-v2 .about-wrap{ position:relative; max-width: 1200px; margin: 0 auto; }
 
-.about-title {
+/* Título central grande (Lostar) */
+.about-v2 .about-title{
+  margin: 0 0 30px;
   text-align: center;
   font-family: "Lostar", serif;
   font-size: 150px;
+  line-height: .95;
   color: #fff;
-  position: relative;
-  z-index: 0; /* fica atrás da foto */
-  margin: 0;
-  padding-bottom: clamp(40px, 6vw, 80px);
+  letter-spacing: .02em;
 }
 
-.about-content {
+/* Grid principal */
+.about-v2 .about-grid{
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 40px;
-  position: relative;
+  grid-template-columns: 1.05fr 1fr;  /* texto / foto */
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
 }
 
-/* Foto e sobreposição com o título */
-.about-photo {
-  position: relative;
-  z-index: 2; /* foto na frente do título */
-  margin-top: clamp(-330px, -25vw, -330px);
+/* Texto da esquerda */
+.about-v2 .about-copy{ max-width: 560px; }
+.about-v2 .about-hello{
+  margin: 0 0 16px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  color:#eaeaea;
 }
+.about-v2 .hand{
+  font-family: "Gistesy", cursive;
+  color:#C5AFD5;
+  font-size: 90px;
+  font-weight: normal;
+  margin-right: 8px;
+}
+.about-v2 .about-copy p{
+  margin: 0 0 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #e9e9e9;
+  font-size: 22px;
+}
+.about-v2 .about-copy em{ color:#C5AFD5; font-style: italic; }
 
-.about-photo img {
-  width: 480px;
+/* Foto da direita (grande, levemente sobre o título) */
+.about-v2 .about-photo{
+  margin: 0;
+  position: relative;
+  top: clamp(-6px, -1.2vw, -18px);  /* sobe um tiquinho como no Figma */
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,.6));
+}
+.about-v2 .about-photo img{
+  display:block;
+  width: min(520px, 42vw);
+  height: auto;
   border-radius: 16px;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.1);
+  filter: grayscale(100%) contrast(1.08);
 }
 
-/* Textos laterais */
-.about-text {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-size: 20px;
-  line-height: 1.7;
-  max-width: 360px;
+/* Responsivo: empilha, centraliza e ajusta larguras */
+@media (max-width: 980px){
+  .about-v2{ padding: 90px 6vw 60px; }
+  .about-v2 .about-grid{ grid-template-columns: 1fr; }
+  .about-v2 .about-title{ margin-bottom: 18px; }
+  .about-v2 .about-copy{ max-width: 680px; margin: 0 auto; text-align: left; }
+  .about-v2 .about-photo{ top: 0; display: grid; place-items: center; }
+  .about-v2 .about-photo img{ width: min(440px, 86vw); }
+  .about-v2 .about-flower.top-right{ right: -6vw; top: 8px; }
+  .about-v2 .about-flower.bottom-left{ left: -6vw; bottom: 8px; }
+}
+
+@media (max-width: 520px){
+  .about-v2 .about-copy p{ line-height: 1.75; }
+  .about-v2 .about-photo img{ width: min(360px, 92vw); }
+}
+
+
+/* Sobe a imagem pra sobrepor o título */
+.about-v2 .about-photo {
+  position: relative;
+  top: clamp(-260px, -30vw, -140px); /* controla o quanto invade o título */
+  z-index: 2; /* garante sobreposição acima do título */
+}
+
+/* Deixa o título um pouco mais pro fundo pra dar profundidade */
+.about-v2 .about-title {
   position: relative;
   z-index: 1;
 }
 
-.about-text.left { text-align: right; }
-.about-text.right { text-align: left; }
+/* Responsivo — foto desce levemente em telas menores */
+@media (max-width: 980px) {
+  .about-v2 .about-photo {
+    top: clamp(-40px, -4vw, -60px);
+  }
+}
 
-.about-text em {
-  color: #C5AFD5;
+/* entrada do título */
+.about-v2 .about-title.reveal{
+  opacity: 0;
+  transform: translateY(22px) scale(.985);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.65,.2,1);
+}
+.about-v2 .about-title.reveal.in{
+  opacity: 1; transform: none;
+}
+
+/* entrada em “escadinha” dos parágrafos */
+.about-v2 .about-copy .reveal{
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2,.65,.2,1);
+}
+.about-v2 .about-copy .reveal.in{ opacity: 1; transform: none; }
+
+/* delays progressivos */
+.about-v2 .about-copy .about-hello.reveal       { transition-delay: .05s; }
+.about-v2 .about-copy p.reveal:nth-of-type(2)   { transition-delay: .15s; }
+.about-v2 .about-copy p.reveal:nth-of-type(3)   { transition-delay: .28s; }
+.about-v2 .about-copy p.reveal:nth-of-type(4)   { transition-delay: .40s; }
+
+/* foto: máscara + fade + depois um flutuar sutil */
+.about-v2 .about-photo.reveal{
+  --r: 18px; /* raio dos cantos */
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  clip-path: inset(0 0 12% 0 round var(--r));
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.2,.65,.2,1),
+    clip-path .8s cubic-bezier(.2,.65,.2,1);
+  transition-delay: .22s;
+}
+.about-v2 .about-photo.reveal.in{
+  opacity: 1; transform: none; clip-path: inset(0 0 0 0 round var(--r));
+  animation: aboutFloat 7s ease-in-out .6s infinite alternate;
+}
+
+/* Corrige o flutuar pra não sobrescrever o reveal */
+.about-v2 .about-photo.reveal.in {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0 round var(--r));
+  animation: aboutFloatFix 6s ease-in-out .6s infinite alternate;
+}
+
+/* anima só a “camada fantasma” da foto */
+.about-v2 .about-photo.reveal.in img {
+  animation: floatInner 6s ease-in-out infinite alternate;
+}
+
+/* foto flutua sem sair da posição original */
+@keyframes floatInner {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-6px); }
+}
+
+
+/* mobile: animações mais leves */
+@media (max-width: 900px){
+  .about-v2 .about-photo.reveal.in{ animation-duration: 9s; }
+  .about-v2 .about-flower{ animation-duration: 18s; }
+}
+
+/* ===== destaque animado lilás nos <em> ===== */
+
+.about-v2 .about-copy em {
+  position: relative;
   font-style: italic;
-}
-
-/* “oiê” */
-.hand {
-  font-family: "Gistesy", cursive;
   color: #C5AFD5;
-  font-size: 110px;
-  font-weight: normal;
-  display: inline-block;
-  transform: rotate(-2deg);
+  transition: color 0.3s ease;
 }
 
-/* sobre mim - Responsivo */
-@media (max-width: 900px) {
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
+.about-v2 .about-copy em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.15em;
+  width: 100%;
+  height: 0.35em;
+  background: linear-gradient(90deg, rgba(197,175,213,0.4), rgba(197,175,213,0.1));
+  border-radius: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+
+.about-v2 .about-copy em:hover {
+  color: #ffffff;
+}
+
+.about-v2 .about-copy em:hover::after {
+  transform: scaleX(1);
+}
+
+/* === Espaçamento entre SOBRE e SKILLS (aperta o gap) === */
+.about-v2{
+  /* menos padding embaixo + puxa a próxima seção pra cima */
+  padding-bottom: clamp(12px, 2vw, 28px);
+  margin-bottom: clamp(-40px, -6vw, -90px); /* sobrepõe um pouquinho */
+}
+
+/* a foto é a culpada por alongar o grid; compensa com margem negativa */
+.about-v2 .about-photo{
+  margin-bottom: clamp(-28px, -5vw, -70px);
+}
+
+/* no mobile a gente volta ao fluxo normal (sem sobreposição) */
+@media (max-width: 980px){
+  .about-v2{
+    margin-bottom: 0;
+    padding-bottom: clamp(28px, 6vw, 44px);
   }
-  .about-text.left,
-  .about-text.right {
-    text-align: center;
-  }
-  .about-photo img {
-    width: 260px;
+  .about-v2 .about-photo{
+    margin-bottom: 0;
   }
 }
 
-
-/* ===== ANIMAÇÃO DO SOBRE MIM ===== */
-.about-title.reveal,
-.about-photo.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: 
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(.2,.65,.2,1);
-  will-change: transform, opacity;
+/* =========== SKILLS ============= */
+.skills {
+  position: relative;
+  text-align: center;
+  padding: clamp(60px, 10vw, 120px) 5vw;
+  background: var(--bg, #000);
+  color: #fff;
 }
 
-.about-title.in,
-.about-photo.in {
-  opacity: 1;
-  transform: translateY(0);
+.skills-title {
+  font-family: 'Lostar', serif;
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  color: #C5AFD5;
+  letter-spacing: 1px;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
-/* delays diferentes pro ritmo */
-.about-title.reveal { transition-delay: 0s; }
-.about-photo.reveal { transition-delay: .2s; }
 
-.about-text.reveal {
-  opacity: 0;
-  transform: translateY(20px) translateX(40px);
-  transition: 
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(.2,.65,.2,1);
-  will-change: transform, opacity;
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
 }
 
-.about-text.left.reveal { transform: translateY(20px) translateX(-40px); }
-
-.about-text.in {
-  opacity: 1;
-  transform: translate(0,0);
+.skill {
+  text-align: center;
+  width: clamp(110px, 15vw, 160px);
 }
 
-/* delays sutis pros blocos */
-.about-text.left.reveal  { transition-delay: .4s; }
-.about-text.right.reveal { transition-delay: .6s; }
-
-.arrow {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 1s ease, transform 1s ease;
+.skill img {
+  width: 50%;
+  opacity: 0.9;
 }
 
-.arrow.in {
-  opacity: 1;
-  transform: scale(1);
-  animation: arrowFloat 6s ease-in-out infinite alternate;
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #1a1a1a 0%, #000 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* movimento de flutuação */
-@keyframes arrowFloat {
-  from { transform: translateY(0) scale(1); }
-  to   { transform: translateY(-6px) scale(1.02); }
+.circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid rgba(197, 175, 213, 0.4);
+  mask: conic-gradient(#c5afd5 calc(var(--p, 0%) * 1%), transparent 0);
+  animation: fillAnim 2.4s ease-out forwards;
 }
 
-/* delays diferentes pra cada */
-.a-left-top.reveal     { transition-delay: 0.8s; }
-.a-right-top.reveal    { transition-delay: 1s; }
-.a-left-bottom.reveal  { transition-delay: 1.2s; }
-.a-right-bottom.reveal { transition-delay: 1.4s; }
+@keyframes fillAnim {
+  from {
+    --p: 0;
+  }
+  to {
+    --p: var(--percent);
+  }
+}
+
+.skill h3 {
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #c5afd5;
+}
+
+.skill p {
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: #c5afd5cc;
+}
+
+.fav-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+
+.fav-projects {
+  margin-top: 4rem;
+  text-align: left;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.fav-projects h3 {
+  font-weight: 600;
+  color: #c5afd5;
+  margin-bottom: 1rem;
+}
+
+.fav-projects ul {
+  list-style: none;
+  padding: 0;
+}
+
+.fav-projects li {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.4rem 0;
+  position: relative;
+}
+
+.fav-projects li::before {
+  content: "•";
+  color: #c5afd5;
+  margin-right: 0.6rem;
+}
+
+.skills .bg-flower {
+  position: absolute;
+  opacity: 0.3;
+  pointer-events: none;
+  width: clamp(160px, 20vw, 260px);
+  height: auto;
+  z-index: 0;
+}
+
+.skills .bg-flower.left {
+  bottom: -20px;
+  left: -60px;
+  transform: rotate(15deg);
+}
+
+.skills .bg-flower.right {
+  top: -60px;
+  right: -80px;
+  transform: rotate(-20deg);
+}
+
+.fav-desc {
+  margin-top: 3rem;
+  text-align: left;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.fav-desc h4 {
+  font-family: "Gistesy", cursive; 
+  font-size: 100px;
+  color: #C5AFD5;
+  margin-bottom: 0.5rem;
+}
+
+.fav-desc p {
+  font-weight: 300;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* ===== SKILLS – flores de fundo (sem HTML extra) ===== */
+.skills{ position: relative; overflow: visible; }
+.skills::before,
+.skills::after{
+  content:"";
+  position:absolute; inset:auto;
+  width: clamp(180px, 22vw, 380px); aspect-ratio:1/1;
+  background: url("./assets/flor.svg") center/contain no-repeat;
+  opacity:.32; filter: blur(16px);
+  pointer-events:none; z-index:0;
+}
+
+/* ===== SKILLS – flores de fundo (sem HTML extra) ===== */
+.skills{ position: relative; overflow: visible; }
+.skills::before,
+.skills::after{
+  content:"";
+  position:absolute; inset:auto;
+  width: clamp(180px, 22vw, 380px); aspect-ratio:1/1;
+  background: url("./assets/flor.svg") center/contain no-repeat;
+  opacity:.32; filter: blur(16px);
+  pointer-events:none; z-index:0;
+}
+.skills::before{ left: -4vw; bottom: -2vw; transform: rotate(12deg); }
+.skills::after { right:-4vw; top: -3vw; transform: rotate(-18deg); }
+
+/* garante que conteúdo fique acima das flores */
+.skills .skills-grid,
+.skills .skills-bottom{ position: relative; z-index: 1; }
+
+/* ===== SKILLS – grid de baixo (favoritos + lorem) ===== */
+.skills-bottom{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 5vw, 60px);
+  align-items: start;
+  max-width: 980px;
+  margin: clamp(36px, 7vw, 80px) auto 0;
+}
+
 
 /* ===== GALLERY (masonry estilo Pinterest) ===== */
 .gallery {
@@ -1216,4 +1486,97 @@ html, body { overflow-x: hidden; }
   transform: scale(1.03);
 }
 
+/* ===== SKILLS — ícones, anel de % e nível ===== */
+:root{
+  --accent:#C5AFD5;
+  --ink:#fff;
+  --ink-2:#d4d4d4;
+  --panel:#0b0b0b;
+  --stroke:#1a1a1a;
+}
 
+.skills{ padding:80px 8vw 40px; }
+.skills-wrap{ display:grid; gap:22px; }
+.skill-row{ display:flex; gap:22px; flex-wrap:wrap; }
+
+/* Cada skill (usa --p no HTML: 0–1) */
+.skill{
+  --p:1;            /* valor padrão; sobrescreva inline no HTML */
+  --size:110px;
+  width:160px;
+  display:grid; justify-items:center; gap:8px;
+}
+.skill .ring{
+  width:var(--size); height:var(--size);
+  border-radius:50%; display:grid; place-items:center; position:relative;
+  background:
+    conic-gradient(var(--accent) calc(var(--p)*1turn), #0000 0) border-box,
+    radial-gradient(var(--panel) 64%, #0000 65%) padding-box;
+  box-shadow:0 0 0 1px var(--stroke) inset;
+}
+.skill .icon, .skill .icon-svg{
+  width:62px; height:62px; border-radius:50%;
+  display:grid; place-items:center; border:1px solid #2a2a2a;
+  background:#c5afd51a; color:var(--ink);
+  font:700 20px/1 "Poppins", system-ui;   /* para a versão com monograma */
+}
+.skill .icon-svg{ padding:10px; }         /* para a versão SVG */
+
+.skill-name{ font:600 .95rem "Poppins", system-ui; color:var(--ink); text-align:center; }
+.skill-level{ font:400 .85rem "Poppins", system-ui; color:var(--ink-2); text-align:center; }
+
+/* Forças 100% e “amei trabalhar” */
+.chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+.chip{ border:1px solid var(--accent); color:var(--accent); padding:8px 12px; border-radius:999px; font:600 .85rem "Poppins"; }
+.loved{ padding:40px 0 0; }
+.loved h3{ margin:0 0 10px; font:700 1rem "Poppins"; letter-spacing:.08em; color:var(--accent); text-transform:uppercase; }
+.loved-list{ display:flex; gap:10px; flex-wrap:wrap; }
+.loved-list .chip{ border-color:#7e6c8f; color:#e9e6ec; }
+
+/* Responsivo */
+@media (max-width:600px){ .skill{ width:33%; } }
+
+/* ===== SKILLS (centralizado / textos juntos) ===== */
+.skills { padding: 80px 8vw 40px; }
+.skills-wrap { display: grid; gap: 22px; justify-items: center; text-align: center; }
+
+.skills-chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.skills-chip { border: 1px solid #C5AFD5; color: #C5AFD5; padding: 8px 12px; border-radius: 999px; font: 600 .85rem "Poppins"; }
+
+.skills-row { display: flex; gap: 26px; flex-wrap: wrap; justify-content: center; }
+.skill { --p:1; --size:110px; width: 140px; display: grid; justify-items: center; }
+.skill-ring {
+  width: var(--size); height: var(--size); border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(#C5AFD5 calc(var(--p)*1turn), #0000 0) border-box,
+              radial-gradient(#0b0b0b 64%, #0000 65%) padding-box;
+  box-shadow: 0 0 0 1px #1a1a1a inset;
+}
+.skill-icon {
+  width: 62px; height: 62px; border-radius: 50%;
+  display: grid; place-items: center; border: 1px solid #2a2a2a;
+  background: #c5afd51a; color: #fff; font: 700 20px/1 "Poppins", system-ui;
+}
+
+/* textos todos juntos, em grid alinhado aos anéis */
+.skills-text-row { 
+  display: grid; 
+  grid-template-columns: repeat(6, minmax(120px, 1fr)); 
+  gap: 26px; 
+  justify-items: center; 
+}
+.skills-text-item { display: grid; gap: 6px; }
+.skills-text-item strong { font: 700 .95rem "Poppins"; color: #fff; }
+.skills-text-item small { font: 400 .85rem "Poppins"; color: #d4d4d4; }
+
+@media (max-width: 980px){
+  .skills-text-row { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
+}
+@media (max-width: 560px){
+  .skills-text-row { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
+
+/* loved */
+.skills-loved { padding: 36px 0 0; width: 100%; }
+.skills-loved h3 { margin: 0 0 10px; font: 700 1rem "Poppins"; letter-spacing: .08em; color: #C5AFD5; text-transform: uppercase; }
+.skills-loved-list { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.skills-loved-list .skills-chip { border-color: #7e6c8f; color: #e9e6ec; }
