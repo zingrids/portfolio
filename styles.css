@@ -312,7 +312,7 @@ body { font-family: "Poppins", sans-serif; }
 /* Sobe a imagem pra sobrepor o título */
 .about-v2 .about-photo {
   position: relative;
-  top: clamp(-260px, -30vw, -140px); /* controla o quanto invade o título */
+  top: clamp(-240px, -10vw, -140px); /* controla o quanto invade o título */
   z-index: 2; /* garante sobreposição acima do título */
 }
 
@@ -461,8 +461,8 @@ body { font-family: "Poppins", sans-serif; }
 
 .skills-title {
   font-family: 'Lostar', serif;
-  font-size: clamp(2.8rem, 6vw, 4.2rem);
-  color: #C5AFD5;
+  font-size: 150px;
+  color: #fff;
   letter-spacing: 1px;
   margin-bottom: clamp(2rem, 5vw, 4rem);
 }
@@ -637,16 +637,106 @@ body { font-family: "Poppins", sans-serif; }
 .skills .skills-grid,
 .skills .skills-bottom{ position: relative; z-index: 1; }
 
-/* ===== SKILLS – grid de baixo (favoritos + lorem) ===== */
-.skills-bottom{
+/* layout das duas colunas */
+.skills-bottom {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(24px, 5vw, 60px);
+  gap: clamp(40px, 6vw, 120px);
+  max-width: 1100px;
+  margin-inline: auto;
+  margin-top: clamp(60px, 10vw, 120px);
   align-items: start;
-  max-width: 980px;
-  margin: clamp(36px, 7vw, 80px) auto 0;
 }
 
+/* bloco esquerdo */
+.fav-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.tools-image {
+  height: 350px;
+  width: auto;
+  flex-shrink: 0;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(7%) saturate(340%)
+    hue-rotate(227deg) brightness(95%) contrast(93%);
+}
+
+.fav-content {
+  text-align: left;
+}
+
+.fav-content p {
+  font-size: 24px;
+  font-weight: 700;
+  color: #c5afd5;
+  margin-bottom: 0.8rem;
+  text-align: left;
+}
+
+.fav-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fav-content li {
+  font-size: 22px;
+  color: #eee;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.fav-content li::before {
+  content: "•";
+  color: #c5afd5;
+  margin-right: 0.5rem;
+}
+
+/* bloco direito */
+.note-panel {
+  position: relative;
+  text-align: left;
+}
+
+.note-title {
+  font-family: "Gistesy", cursive;
+  font-size: 100px;
+  color: #c5afd5;
+  margin-bottom: 0.6rem;
+  text-align: left;
+}
+
+.note-panel p {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.8;
+  max-width: 900px;
+  text-align: left;
+}
+
+/* responsivo */
+@media (max-width: 980px) {
+  .skills-bottom {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .fav-panel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tools-image {
+    margin-bottom: 1rem;
+  }
+
+  .fav-content,
+  .note-panel {
+    text-align: center;
+  }
+}
 
 /* ===== GALLERY (masonry estilo Pinterest) ===== */
 .gallery {
@@ -1580,3 +1670,59 @@ html, body { overflow-x: hidden; }
 .skills-loved h3 { margin: 0 0 10px; font: 700 1rem "Poppins"; letter-spacing: .08em; color: #C5AFD5; text-transform: uppercase; }
 .skills-loved-list { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .skills-loved-list .skills-chip { border-color: #7e6c8f; color: #e9e6ec; }
+
+/* ===== CÍRCULOS DE SKILLS ===== */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* remove gradiente de fundo dos círculos */
+.skill-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: none; /* 🔹 remove o gradiente */
+  border: 2px solid #bda7ce;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* barra de progresso (mantém, mas simplifica a cor) */
+.skill-circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress, 75%);
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #bda7ce;
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* ícone dentro do círculo */
+.skill-circle img {
+  width: 40px; /* 🔹 todos os ícones com 40px */
+  height: 40px;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(7%) saturate(340%)
+    hue-rotate(227deg) brightness(95%) contrast(93%);
+}
+
+/* nome e nível */
+.skill-item h4 {
+  color: #c5afd5;
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+
+.skill-item p {
+  color: #c5afd5;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: -0.3rem;
+}
