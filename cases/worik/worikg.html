@@ -1,153 +1,134 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Fontes e CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../../assets/estrela.svg">
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-  <title>Branding | Worikg</title>
+  <title data-i18n="case.worik.meta">Branding | Worikg</title>
 </head>
 <body>
-  <!-- TÍTULO + BANNER FULL -->
-  <section class="case-hero reveal">
-    <h1 class="case-title">Branding</h1>
 
+  <!-- IDIOMA -->
+  <header class="idioma">
+    <button class="lang-btn active" data-lang="pt" data-i18n="lang.pt">PT</button>
+    <button class="lang-btn" data-lang="en" data-i18n="lang.en">EN</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="case-hero reveal">
+    <h1 class="case-title" data-i18n="case.worik.h1">Branding</h1>
     <section class="case-banner">
-      <!-- imagens LOCAIS do case -->
-      <div class="banner-bg" style="background-image: url('./banner.png')"></div>
+      <div class="banner-bg" style="background-image: url('./banner.png')" aria-hidden="true"></div>
     </section>
   </section>
 
-  <!-- TRINCA: SOBRE / BRIEFING / DESENVOLVIMENTO -->
+  <!-- TRINCA -->
   <section class="case-grid">
     <div class="case-col reveal">
-      <h3>SOBRE</h3>
-      <p>O Worikg: Museu que Anda é um projeto de identidade visual desenvolvido a partir da escuta e da ancestralidade dos povos Kaingang e Guarani Nhandewa.
-Mais do que um museu físico, o Worikg é um corpo vivo de memória, onde cada objeto, canto e gesto carrega história e resistência. O nome “Worikg”, que em Kaingang significa Sol Nascente, reflete a ideia de um tempo em movimento — memória que não se guarda, mas que anda.
-A marca nasce do território e retorna a ele: feita de terra, de voz e de caminho.</p>
+      <h3 data-i18n="case.common.about">SOBRE</h3>
+      <p data-i18n="case.worik.about">
+        O Worikg: Museu que Anda…
+      </p>
     </div>
     <div class="case-col reveal">
-      <h3>BRIEFING</h3>
-      <p>Criar uma identidade visual que comunicasse a força ancestral e a vitalidade do Museu Worikg Sol Nascente, transmitindo o conceito de “Museu que Anda” — a memória indígena como presença viva.
-O desafio era equilibrar a organicidade das tradições orais com a clareza institucional necessária para materiais educativos, documentais e digitais.
-A marca deveria traduzir valores de ancestralidade, escuta, caminho e resistência, preservando a simbologia do Sol Nascente e o vínculo com a terra.</p>
+      <h3 data-i18n="case.common.briefing">BRIEFING</h3>
+      <p data-i18n="case.worik.briefing">
+        Criar uma identidade visual…
+      </p>
     </div>
     <div class="case-col reveal">
-      <h3>DESENVOLVIMENTO</h3>
-      <p>O processo partiu da tipografia Frecle Face, redesenhada manualmente para adquirir textura e ritmo próprios, remetendo à escrita artesanal e à oralidade.
-Da letra “O” nasceu o símbolo do Sol Nascente, trabalhado com formas abertas e assimétricas que representam os raios de luz, o caminho da escuta e a ligação com o chão — a terra ancestral.</p>
+      <h3 data-i18n="case.common.dev">DESENVOLVIMENTO</h3>
+      <p data-i18n="case.worik.dev">
+        O processo partiu da tipografia…
+      </p>
     </div>
   </section>
 
-  <!-- FLUXO DO CASE -->
+  <!-- FLUXO -->
   <section class="case-flow">
 
-    <!-- 1) MOOD BOARD -->
     <section class="flow-block block-mood">
       <div class="copy">
-        <h2 class="flow-title left">MOOD BOARD</h2>
-        <p class="flow-desc">
-          Este moodboard nasce da vivência no território e do registro sensível da visita ao Museu Worikg – Sol Nascente.
-Mais do que uma coleção de imagens, ele é um retrato da escuta: os encontros, os gestos, os objetos e as cores que compõem o cotidiano do museu.
-As fotografias capturam o calor da terra, o brilho do urucum, o som do vento nas árvores e a presença dos corpos que guardam e compartilham memória.
-A composição revela a força do coletivo e o entrelaçamento entre natureza, oralidade e resistência.
-Cada imagem é um fragmento de história viva — um lembrete de que o Worikg é feito de pessoas, caminhos e partilhas.
+        <h2 class="flow-title left" data-i18n="case.common.mood">MOOD BOARD</h2>
+        <p class="flow-desc" data-i18n="case.worik.mooddesc">
+          Este moodboard nasce da vivência…
         </p>
       </div>
       <figure class="media">
-        <img src="./moodboard.png" alt="Moodboard — referências e atmosfera" loading="lazy">
+        <img src="./moodboard.png" loading="lazy" data-i18n-attr="alt:case.worik.moodAlt" alt="Moodboard">
       </figure>
     </section>
 
-    <!-- 2) MOCKUP -->
     <section class="flow-block block-mock invert">
       <figure class="media">
-        <img src="./mockup.png" alt="Mockup — exploração de capa" loading="lazy">
+        <img src="./mockup.png" loading="lazy" data-i18n-attr="alt:case.worik.mockAlt" alt="Mockup">
       </figure>
       <div class="copy align-right">
-        <h2 class="flow-title right">APLICAÇÕES</h2>
-        <p class="flow-desc">O mockup foi pensado como extensão da própria identidade do Museu que Anda.
-A cena apresenta o livro e os materiais do museu sob luz suave, em um ambiente que evoca o amanhecer — metáfora do Worikg.
-O fundo terroso e o equilíbrio entre textura e vazio remetem à relação entre terra e céu, silêncio e palavra.
-Mais do que mostrar a marca, o mockup a coloca em seu contexto simbólico: a memória como algo que se move e ilumina.</p>
+        <h2 class="flow-title right" data-i18n="case.worik.apps">APLICAÇÕES</h2>
+        <p class="flow-desc" data-i18n="case.worik.mockdesc">
+          O mockup foi pensado como extensão…
+        </p>
       </div>
     </section>
 
-    <!-- 3) RESULTADO -->
     <section class="flow-result">
-      <h2 class="flow-title left">RESULTADO</h2>
-      
-      <!-- SEÇÃO: MANUAL E DOCUMENTÁRIO -->
-<section class="case-downloads reveal">
-  <!-- Card 1: Manual de Marca -->
-  <div class="download-card">
-    <h2 class="flow-title">Manual de Marca</h2>
-    <p class="flow-desc">
-      Baixe o manual de marca do Museu Worikg Sol 🌞 e conheça a identidade visual completa do projeto.
-    </p>
-    <a href="./manual-de-marca-worikg.pdf" download class="btn-solid">
-      <i class="fa-solid fa-download"></i> Baixar manual
-    </a>
-  </div>
+      <h2 class="flow-title left" data-i18n="case.common.result">RESULTADO</h2>
 
-  <!-- Card 2: Documentário -->
-  <div class="download-card">
-    <h2 class="flow-title">Documentário</h2>
-    <p class="flow-desc">
-      Assista ao mini-documentário sobre o Museu Worikg Sol e sua história viva no território indígena.
-    </p>
-    <a href="https://youtu.be/6BziE0pOYmU?si=Bv02zTuVTJ6Ry5Tt" target="_blank" class="btn-solid">
-      <i class="fa-brands fa-youtube"></i> Assistir no YouTube
-    </a>
-  </div>
-</section>
+      <section class="case-downloads reveal">
+        <div class="download-card">
+          <h2 class="flow-title" data-i18n="case.worik.manualTitle">Manual de Marca</h2>
+          <p class="flow-desc" data-i18n="case.worik.manualDesc">
+            Baixe o manual de marca…
+          </p>
+          <a href="./manual-de-marca-worikg.pdf" download class="btn-solid">
+            <i class="fa-solid fa-download"></i> <span data-i18n="case.worik.manualCta">Baixar manual</span>
+          </a>
+        </div>
 
+        <div class="download-card">
+          <h2 class="flow-title" data-i18n="case.worik.docTitle">Documentário</h2>
+          <p class="flow-desc" data-i18n="case.worik.docDesc">
+            Assista ao mini-documentário…
+          </p>
+          <a href="https://youtu.be/6BziE0pOYmU?si=Bv02zTuVTJ6Ry5Tt" target="_blank" class="btn-solid">
+            <i class="fa-brands fa-youtube"></i> <span data-i18n="case.worik.docCta">Assistir no YouTube</span>
+          </a>
+        </div>
+      </section>
+    </section>
 
   </section>
 
+  <footer class="case-minifooter">
+    <nav class="case-minifooter-nav" data-i18n-attr="aria-label:nav.sections" aria-label="Seções">
+      <a href="../../index.html#top" class="ft-link">
+        <i class="fa-solid fa-house"></i><span data-i18n="nav.home">Home</span>
+      </a>
+      <span class="dot" aria-hidden="true">•</span>
+      <a href="../../index.html#galeria" class="ft-link">
+        <i class="fa-solid fa-images"></i><span data-i18n="nav.gallery">Galeria</span>
+      </a>
+    </nav>
+    <small class="ft-copy" data-i18n="footer.credit">© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘</small>
+  </footer>
 
-<!-- BOTÃO FIXO: VOLTAR AO TOPO -->
-<button id="backToTop" aria-label="Voltar ao topo">
-  <i class="fa-solid fa-chevron-up"></i>
-</button>
-
-
-<!--FOOTER-->
-<footer class="case-minifooter">
-  <nav class="case-minifooter-nav" aria-label="Navegação final">
-    <a href="../../index.html#top" class="ft-link">
-      <i class="fa-solid fa-house"></i><span>Home</span>
-    </a>
-    <span class="dot" aria-hidden="true">•</span>
-    <a href="../../index.html#galeria" class="ft-link">
-      <i class="fa-solid fa-images"></i><span>Galeria</span>
-    </a>
-  </nav>
-  <small class="ft-copy">© 2025 Ingrid Lima</small>
-</footer>
-
-<!-- botão fixo de voltar ao topo (usa o mesmo JS já do site) -->
-<button id="scrollTop" class="progress-top" aria-label="Voltar ao topo">
-  <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
-    <circle class="bg"  cx="22" cy="22" r="18"></circle>
-    <circle class="bar" cx="22" cy="22" r="18"></circle>
-  </svg>
-  <span class="chevron" aria-hidden="true">
-    <!-- Lucide chevron-up -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6"/>
+  <button id="scrollTop" class="progress-top" data-i18n-attr="aria-label:nav.backTop" aria-label="Voltar ao topo">
+    <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="bg" cx="22" cy="22" r="18"></circle>
+      <circle class="bar" cx="22" cy="22" r="18"></circle>
     </svg>
-  </span>
-</button>
+    <span class="chevron" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+    </span>
+  </button>
 
-  <!-- Scripts globais (na raiz) -->
   <script src="../../script.js" defer></script>
 </body>
 </html>

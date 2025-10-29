@@ -1726,3 +1726,28 @@ html, body { overflow-x: hidden; }
   font-size: 0.9rem;
   margin-top: -0.3rem;
 }
+
+/* limitar largura dos textos nos blocos do case */
+.flow-block .copy {
+  max-width: 52ch;          /* ~52 caracteres por linha = leitura confortável */
+  justify-self: start;      /* por padrão, encosta à esquerda dentro da coluna */
+}
+
+/* quando for o bloco invert e você usar .align-right */
+.flow-block .copy.align-right {
+  justify-self: end;        /* encosta o bloco à direita da coluna, não na borda da tela */
+  text-align: right;        /* mantém o alinhamento tipográfico */
+}
+
+/* opcional: centralizar verticalmente texto/imagem no grid */
+.flow-block { align-items: center; }
+
+/* responsivo: em stack, deixa ocupar a largura toda */
+@media (max-width: 900px) {
+  .flow-block .copy,
+  .flow-block .copy.align-right {
+    max-width: 65ch;
+    justify-self: stretch;
+    text-align: left;       /* acompanha tua regra já existente no CSS */
+  }
+}

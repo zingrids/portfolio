@@ -15,7 +15,7 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   const idiomaSalvo = localStorage.getItem('idioma');
   if (idiomaSalvo) {
     botoes.forEach(b => {
-      b.classList.toggle('active', b.textContent.trim() === idiomaSalvo);
+      b.classList.toggle('active', b.dataset.lang === idiomaSalvo);
     });
   }
 
@@ -23,17 +23,14 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     botao.addEventListener('click', () => {
       botoes.forEach(b => b.classList.remove('active'));
       botao.classList.add('active');
-      localStorage.setItem('idioma', botao.textContent.trim());
-      // aqui você pode disparar troca de texto futuramente
+      localStorage.setItem('idioma', botao.dataset.lang);
+      // troca de textos acontece pelo i18n abaixo
     });
   });
 })();
 
 // =========================
-/* Reveal com IntersectionObserver
-   - Adiciona .in quando entra na viewport
-   - Stagger automático por grupo (.hero-wrap, .about-content, .masonry, .case-hero, .case-grid, .case-sections)
-*/
+/* Reveal com IntersectionObserver */
 // =========================
 (() => {
   const revealEls = $all('.reveal');
@@ -44,7 +41,6 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     return;
   }
 
-  // Stagger automático por contêiner (cada grupo entra em sequência)
   const groups = [
     '.hero-wrap',
     '.about-content',
@@ -58,7 +54,6 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     if (!group) return;
     const itens = $all('.reveal', group);
     itens.forEach((el, i) => {
-      // 60ms de diferença por item (pode ajustar)
       el.style.transitionDelay = `${i * 60}ms`;
     });
   });
@@ -100,13 +95,12 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Fallback: se a hero não tiver rolagem suficiente, adiciona leve parallax no mouse
   const hasScroll = () => document.documentElement.scrollHeight > innerHeight * 1.2;
   if (!hasScroll()) {
     const onMove = (e) => {
       const cx = innerWidth / 2, cy = innerHeight / 2;
-      const dx = (e.clientX - cx) / cx;  // -1..1
-      const dy = (e.clientY - cy) / cy;  // -1..1
+      const dx = (e.clientX - cx) / cx;
+      const dy = (e.clientY - cy) / cy;
       shapes.forEach(el => {
         const s = parseFloat(el.dataset.speed || 0.2);
         const x = clamp(dx * 30 * s, -50, 50);
@@ -119,24 +113,21 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 })();
 
 // =========================
-// Banner do projeto: parallax "janela viva"
+// Banner do projeto
 // =========================
 (() => {
   if (prefersReduced) return;
   const banner = document.querySelector('.banner-bg');
   if (!banner) return;
-
-  // movimento suave proporcional ao scroll
   const onScroll = () => {
     const y = window.scrollY || window.pageYOffset;
-    // ajuste fino da velocidade (0.25 é bom ponto de partida)
     banner.style.transform = `translateY(${y * 0.25}px)`;
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// ===== MENU SANDUÍCHE (abrir/fechar) =====
+// ===== MENU SANDUÍCHE =====
 (() => {
   const btn = document.querySelector('.hamburger');
   const drawer = document.querySelector('#menu-drawer');
@@ -168,7 +159,7 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 })();
 
 /* =========================
-   i18n (PT/EN) — simples e robusto
+   i18n (PT/EN)
    ========================= */
 
 // 1) DICIONÁRIO
@@ -179,28 +170,40 @@ const I18N = {
     // HERO
     "hero.title": "PORTFÓLIO",
     "hero.subtitle": "Ingrid Lima",
+    "nav.sections": "Seções",
+    "hero.nav.skills": "Skills",
+    "hero.nav.gallery": "Galeria",
+    "hero.nav.contact": "Contato",
 
     // SOBRE
     "about.title": "SOBRE MIM",
-    "about.hello": "oi,",
+    "about.hello": "oiê,",
     "about.thisisme": "essa sou eu",
     "about.p1": 'Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que <em>toda boa história nasce de um olhar atento.</em>',
     "about.p2": 'Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em>',
     "about.p3": "Sou formada em Design Gráfico e Teatro, com especialização em Branding e Marketing Digital.",
     "about.photoAlt": "Minha foto",
 
+    // SKILLS
+    "skills.title": "Skills",
+    "skills.toolsAlt": "Ferramentas",
+    "skills.favTitle": "Projetos favoritos",
+    "skills.fav.criacao": "Criação",
+    "skills.fav.escrita": "Escrita",
+    "skills.fav.branding": "Branding",
+    "skills.fav.eventos": "Eventos",
+    "skills.fav.uiux": "UI/UX",
+    "skills.n1": "Em resumo",
+    "skills.n2": 'Trabalho com o que me move: estética, emoção e histórias. No design encontro presença, ritmo e intenção.',
+
     // GALERIA
-    "gallery.title": "Ingrid’s Gallery",
-    "gallery.open.cartas": "Abrir projeto Cartas",
-    "gallery.open.born": "Abrir projeto Born",
-    "gallery.open.ordem": "Abrir projeto Ordem",
+    "gallery.title": "Ingrid's Gallery",
     "gallery.open.dmmb": "Abrir projeto Devaneios",
-    "gallery.open.farma": "Abrir projeto Farmacêutico",
-    "gallery.card.cartas": "Cartas para o Amanhã",
-    "gallery.card.born": "Documentário Worikg",
-    "gallery.card.ordem": "A Ordem e o Abismo",
-    "gallery.card.dmmb": "Devaneios de Madrugada de uma Mente Bitolada",
-    "gallery.card.farma": "Farmacêutico de Primeira Viagem",
+    "gallery.open.worik": "Abrir projeto Worikg",
+    "gallery.open.pastas": "Abrir projeto Pastas saborizantes",
+    "gallery.card.dmmb": "Diagramação | Devaneios de Madrugada",
+    "gallery.card.worik": "Branding | Documentário Worikg",
+    "gallery.card.pastas": "Embalagens | Pastas saborizantes",
 
     // CONTATO
     "contact.title": "Vamos criar?",
@@ -217,6 +220,7 @@ const I18N = {
     "nav.gallery": "Galeria",
     "nav.contact": "Contato",
     "nav.open": "Abrir menu",
+    "nav.backTop": "Voltar ao topo",
 
     // Rótulos de botões de idioma
     "lang.pt": "PT",
@@ -229,6 +233,10 @@ const I18N = {
     // HERO
     "hero.title": "PORTFOLIO",
     "hero.subtitle": "Ingrid Lima",
+    "nav.sections": "Sections",
+    "hero.nav.skills": "Skills",
+    "hero.nav.gallery": "Gallery",
+    "hero.nav.contact": "Contact",
 
     // ABOUT
     "about.title": "ABOUT ME",
@@ -239,18 +247,26 @@ const I18N = {
     "about.p3": "Graduated in Graphic Design and Theatre, with specialization in Branding and Digital Marketing.",
     "about.photoAlt": "My photo",
 
+    // SKILLS
+    "skills.title": "Skills",
+    "skills.toolsAlt": "Tools",
+    "skills.favTitle": "Favorite projects",
+    "skills.fav.criacao": "Creation",
+    "skills.fav.escrita": "Writing",
+    "skills.fav.branding": "Branding",
+    "skills.fav.eventos": "Events",
+    "skills.fav.uiux": "UI/UX",
+    "skills.n1": "In short",
+    "skills.n2": "I work with what moves me: aesthetics, emotion, and stories. In design I find presence, rhythm, and intention.",
+
     // GALLERY
     "gallery.title": "Ingrid’s Gallery",
-    "gallery.open.cartas": "Open project Cartas",
-    "gallery.open.born": "Open project Born",
-    "gallery.open.ordem": "Open project Ordem",
     "gallery.open.dmmb": "Open project Devaneios",
-    "gallery.open.farma": "Open project Farmacêutico",
-    "gallery.card.cartas": "Letters for Tomorrow",
-    "gallery.card.born": "Worikg Documentary",
-    "gallery.card.ordem": "The Order and the Abyss",
-    "gallery.card.dmmb": "Dawn Ramblings of a Narrow Mind",
-    "gallery.card.farma": "First-Time Pharmacist",
+    "gallery.open.worik": "Open project Worikg",
+    "gallery.open.pastas": "Open project Flavoring Pastes",
+    "gallery.card.dmmb": "Typesetting | Devaneios de Madrugada",
+    "gallery.card.worik": "Branding | Worikg Documentary",
+    "gallery.card.pastas": "Packaging | Flavoring Pastes",
 
     // CONTACT
     "contact.title": "Shall we create?",
@@ -266,37 +282,144 @@ const I18N = {
     "nav.gallery": "Gallery",
     "nav.contact": "Contact",
     "nav.open": "Open menu",
+    "nav.backTop": "Back to top",
 
     "lang.pt": "PT",
     "lang.en": "EN",
   }
 };
 
+// Dentro de I18N.pt  (adicione estas chaves)
+Object.assign(I18N.pt, {
+  // comuns para cases
+  "case.common.about": "SOBRE",
+  "case.common.briefing": "BRIEFING",
+  "case.common.dev": "DESENVOLVIMENTO",
+  "case.common.mood": "MOOD BOARD",
+  "case.common.mock": "MOCKUP",
+  "case.common.result": "RESULTADO",
+
+  // DMMB
+  "case.dmmb.meta": "Devaneios de Madrugada",
+  "case.dmmb.h1": "Diagramação",
+  "case.dmmb.about": "Devaneios de Madrugada de uma Mente Bitolada é uma coletânea de poesias que atravessa emoções sutis e intensas, explorando a delicadeza dos sentimentos humanos. O livro propõe uma leitura sensorial, onde palavra, silêncio e espaço visual se entrelaçam em uma experiência estética e introspectiva.",
+  "case.dmmb.briefing": "O projeto nasceu do desejo de registrar pensamentos e sensações noturnas em formato poético, transformando experiências pessoais em linguagem visual e literária. O desafio foi criar uma identidade que equilibrasse emoção e racionalidade, traduzindo o tom íntimo das poesias em um design que respirasse delicadeza e silêncio.",
+  "case.dmmb.dev": "O processo envolveu a escolha de uma tipografia fluida e contemporânea e um grid minimalista que privilegia o espaço em branco como elemento expressivo. A paleta monocromática reforça o caráter introspectivo, enquanto detalhes sutis criam um ritmo visual que acompanha o respiro poético de cada página.",
+  "case.dmmb.mooddesc": "Durante o processo, percebi como o espaço negativo e o silêncio visual podem ser tão expressivos quanto a própria palavra. O design do livro respira com o texto — cria pausas, ritmo e intimidade.",
+  "case.dmmb.moodAlt": "Moodboard — referências e atmosfera",
+  "case.dmmb.mockAlt": "Mockup — exploração de capa",
+  "case.dmmb.mockdesc": "O mockup evidencia o caráter sensorial do projeto, traduzindo visualmente o convite à pausa e à contemplação que o livro propõe.",
+  "case.dmmb.resultAlt": "Resultado final — fotografia",
+
+  // PASTAS (embalagens)
+  "case.pastas.meta": "Linha de Embalagens",
+  "case.pastas.h1": "Embalagens",
+  "case.pastas.about": "A marca estava lançando um novo produto e precisava de embalagens que transmitissem a marca.",
+  "case.pastas.briefing": "Pastas saborizantes para sorveteiros: embalagens que se destacassem e mostrassem qualidade ao mesmo tempo.",
+  "case.pastas.dev": "Criação de uma estrutura modular de rótulos (logotipo fixo, faixa de sabor variável), paleta cromática baseada em matizes naturais e testes de legibilidade em impressão e redução.",
+  "case.pastas.mockAlt": "Mockup — visual das embalagens",
+  "case.pastas.mockdesc": "O mockup explora iluminação suave e foco no acabamento para comunicar qualidade e apetite visual.",
+  "case.pastas.lineTitle": "Linha de pastas saborizantes",
+  "case.pastas.linedesc": "Sistema de embalagens com unidade de marca e variação de sabores por cor, mantendo consistência tipográfica e destaque para a categoria.",
+  "case.pastas.lineCta": "Confira a linha completa no site",
+  "case.pastas.lineAlt": "Linha de pastas saborizantes VaBene",
+
+  // WORIKG
+  "case.worik.meta": "Branding | Worikg",
+  "case.worik.h1": "Branding",
+  "case.worik.about": "O Worikg: Museu que Anda é um projeto de identidade visual desenvolvido a partir da escuta e da ancestralidade dos povos Kaingang e Guarani Nhandewa… A marca nasce do território e retorna a ele.",
+  "case.worik.briefing": "Criar uma identidade visual que comunicasse a força ancestral e a vitalidade do Museu Worikg Sol Nascente, equilibrando organicidade e clareza institucional.",
+  "case.worik.dev": "Partimos da tipografia Frecle Face, redesenhada manualmente. Da letra “O” nasceu o símbolo do Sol Nascente, com formas abertas e assimétricas que representam raios, caminho e ligação com a terra.",
+  "case.worik.mooddesc": "Moodboard nascido da vivência no território — escuta, gestos, objetos e cores do cotidiano do museu. Natureza, oralidade e resistência entrelaçadas.",
+  "case.worik.moodAlt": "Moodboard — referências e atmosfera Worikg",
+  "case.worik.apps": "APLICAÇÕES",
+  "case.worik.mockAlt": "Mockup — aplicações da identidade",
+  "case.worik.mockdesc": "O mockup como extensão da identidade: luz de amanhecer, fundo terroso, equilíbrio entre textura e vazio, colocando a memória em movimento.",
+  "case.worik.manualTitle": "Manual de Marca",
+  "case.worik.manualDesc": "Baixe o manual de marca do Museu Worikg Sol e conheça a identidade visual completa do projeto.",
+  "case.worik.manualCta": "Baixar manual",
+  "case.worik.docTitle": "Documentário",
+  "case.worik.docDesc": "Assista ao mini-documentário sobre o Museu Worikg Sol e sua história viva no território indígena.",
+  "case.worik.docCta": "Assistir no YouTube"
+});
+
+// Dentro de I18N.en  (adicione estas chaves)
+Object.assign(I18N.en, {
+  // common
+  "case.common.about": "ABOUT",
+  "case.common.briefing": "BRIEFING",
+  "case.common.dev": "DEVELOPMENT",
+  "case.common.mood": "MOOD BOARD",
+  "case.common.mock": "MOCKUP",
+  "case.common.result": "RESULT",
+
+  // DMMB
+  "case.dmmb.meta": "Dawn Ramblings",
+  "case.dmmb.h1": "Typesetting",
+  "case.dmmb.about": "“Devaneios de Madrugada de uma Mente Bitolada” is a poetry collection that traverses subtle and intense emotions… A sensorial reading where word, silence and white space intertwine.",
+  "case.dmmb.briefing": "Born from the desire to record late-night thoughts and sensations in poetic form. The challenge was to balance emotion and clarity, translating intimacy into a design that breathes.",
+  "case.dmmb.dev": "We chose a fluid, contemporary typeface and a minimalist grid that treats white space as an expressive element. A monochrome palette reinforces introspection while subtle details set the rhythm.",
+  "case.dmmb.mooddesc": "Negative space and visual silence can be as expressive as words. The layout breathes with the text — creating pauses, rhythm and intimacy.",
+  "case.dmmb.moodAlt": "Mood board — references and atmosphere",
+  "case.dmmb.mockAlt": "Mockup — cover exploration",
+  "case.dmmb.mockdesc": "The mockup highlights the project’s sensorial character, visually translating the invitation to pause and contemplate.",
+  "case.dmmb.resultAlt": "Final result — photography",
+
+  // PASTAS
+  "case.pastas.meta": "Packaging Line",
+  "case.pastas.h1": "Packaging",
+  "case.pastas.about": "The brand was launching a new product and needed packaging that expressed its identity.",
+  "case.pastas.briefing": "Flavoring pastes for ice-cream makers: packaging that stands out while communicating quality.",
+  "case.pastas.dev": "Modular label system (fixed logotype, variable flavor band), natural-hue palette, and legibility tests for print and reduction.",
+  "case.pastas.mockAlt": "Mockup — packaging visuals",
+  "case.pastas.mockdesc": "The mockup uses gentle lighting and finish emphasis to communicate quality and appetite appeal.",
+  "case.pastas.lineTitle": "Flavoring paste line",
+  "case.pastas.linedesc": "A packaging system with brand unity and flavor variation by color, consistent typography and strong category cueing.",
+  "case.pastas.lineCta": "See the full line on the website",
+  "case.pastas.lineAlt": "VaBene flavoring paste line",
+
+  // WORIKG
+  "case.worik.meta": "Branding | Worikg",
+  "case.worik.h1": "Branding",
+  "case.worik.about": "Worikg: The Museum that Walks is a visual identity project born from listening and from Kaingang and Guarani Nhandewa ancestry… A brand that comes from the land and returns to it.",
+  "case.worik.briefing": "Create a visual identity that communicates ancestral strength and vitality, balancing organic tradition with institutional clarity.",
+  "case.worik.dev": "We started from the Frecle Face type, redrawn by hand. From the letter “O”, the Rising Sun symbol emerged — open, asymmetrical shapes for rays, pathway and bond with the land.",
+  "case.worik.mooddesc": "A mood board born from field experience — listening, gestures, objects and colors of the museum’s everyday life. Nature, orality and resistance intertwined.",
+  "case.worik.moodAlt": "Mood board — Worikg references and atmosphere",
+  "case.worik.apps": "APPLICATIONS",
+  "case.worik.mockAlt": "Mockup — identity applications",
+  "case.worik.mockdesc": "The mockup extends the identity: dawn light, earthy background, balanced texture/void — placing memory in movement.",
+  "case.worik.manualTitle": "Brand Guidelines",
+  "case.worik.manualDesc": "Download the Worikg brand manual and explore the full visual identity.",
+  "case.worik.manualCta": "Download manual",
+  "case.worik.docTitle": "Documentary",
+  "case.worik.docDesc": "Watch the mini-documentary about Worikg and its living history in the indigenous territory.",
+  "case.worik.docCta": "Watch on YouTube"
+});
+
+
 // Se tiver CV em EN, coloque o caminho aqui
 const CV_BY_LANG = {
   pt: "./assets/curriculo-Ingrid-Lima.pdf",
-  en: "./assets/resume-Ingrid-Lima.pdf"  // troque se não existir
+  en: "./assets/resume-Ingrid-Lima.pdf"  // ajuste o caminho se necessário
 };
 
-// 2) Função que aplica as traduções
+// 2) Aplicar traduções
 function applyI18n(lang) {
   const dict = I18N[lang] || I18N.pt;
 
-  // textos simples
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
-  // textos com HTML
   document.querySelectorAll("[data-i18n-html]").forEach(el => {
     const key = el.getAttribute("data-i18n-html");
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
 
-  // atributos (aria-label, title, placeholder…)
   document.querySelectorAll("[data-i18n-attr]").forEach(el => {
-    const spec = el.getAttribute("data-i18n-attr"); // ex: aria-label:nav.open;title:nav.open
+    const spec = el.getAttribute("data-i18n-attr");
     spec.split(";").forEach(pair => {
       const [attr, key] = pair.split(":").map(s => s && s.trim());
       if (!attr || !key) return;
@@ -304,11 +427,9 @@ function applyI18n(lang) {
     });
   });
 
-  // currículo por idioma
   const cv = document.getElementById("cv-link");
   if (cv && CV_BY_LANG[lang]) cv.setAttribute("href", CV_BY_LANG[lang]);
 
-  // <html lang="">
   document.documentElement.setAttribute("lang", lang);
 }
 
@@ -317,12 +438,10 @@ function applyI18n(lang) {
   const buttons = Array.from(document.querySelectorAll(".lang-btn"));
   if (!buttons.length) return;
 
-  // garante data-lang
   buttons.forEach(b => {
     if (!b.dataset.lang) b.dataset.lang = b.textContent.trim().toLowerCase();
   });
 
-  // idioma salvo/detectado
   let lang = localStorage.getItem("idioma");
   if (!lang) {
     lang = navigator.language && navigator.language.startsWith("en") ? "en" : "pt";
@@ -331,11 +450,9 @@ function applyI18n(lang) {
 
   const markActive = (l) => buttons.forEach(b => b.classList.toggle("active", b.dataset.lang === l));
 
-  // aplica na carga
   markActive(lang);
   applyI18n(lang);
 
-  // clique
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
       const next = btn.dataset.lang;
@@ -346,11 +463,10 @@ function applyI18n(lang) {
     });
   });
 
-  // util opcional p/ debugar no console
   window.i18nDebug = () => ({ lang: localStorage.getItem("idioma") });
 })();
 
-// ===== Botão de progresso + voltar ao topo (robusto) =====
+// ===== Botão de progresso + voltar ao topo =====
 (() => {
   const btn = document.getElementById('scrollTop');
   if (!btn) return;
@@ -361,14 +477,13 @@ function applyI18n(lang) {
   bar.style.strokeDasharray = `${circumference}`;
   bar.style.strokeDashoffset = `${circumference}`;
 
-  const thresholdShow = 80;   // aparece depois de ~80px
-  const thresholdReady = 0.98; // seta aparece quando chega ~98% do fim
+  const thresholdShow = 80;
+  const thresholdReady = 0.98;
   const update = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
 
-    // mostra em páginas curtas também
     if (scrollTop > thresholdShow || maxScroll < 400) {
       btn.classList.add('show');
     } else {
@@ -385,13 +500,12 @@ function applyI18n(lang) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // inicializa
   update();
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
 })();
 
-// BOTÃO "VOLTAR AO TOPO" (aparece ao rolar)
+// BOTÃO "VOLTAR AO TOPO" (fallback)
 (() => {
   const btn = document.getElementById('backToTop');
   if (!btn) return;
@@ -406,9 +520,7 @@ function applyI18n(lang) {
   });
 })();
 
-
 // ANIMAÇÃO DO SKILLS
-
 document.querySelectorAll('.circle').forEach(circle => {
   const percent = circle.dataset.percent;
   circle.style.setProperty('--percent', percent);
