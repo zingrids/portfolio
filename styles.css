@@ -749,7 +749,7 @@ body { font-family: "Poppins", sans-serif; }
   font-size: 100px;
   color: #C5AFD5;
   margin: 0 0 28px;
-  text-align: left;
+  text-align: center;
 }
 
 /* Masonry com CSS columns: simples e super compatível */
@@ -760,6 +760,26 @@ body { font-family: "Poppins", sans-serif; }
 @media (min-width: 600px){ .masonry { columns: 2; } }
 @media (min-width: 900px){ .masonry { columns: 3; } }
 @media (min-width: 1200px){ .masonry { columns: 4; } }
+
+/* Animação de filtro na galeria */
+.gallery .card {
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.gallery .card.filter-hiding {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.gallery .card.filter-show {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.gallery .card.filter-show.filter-show-active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Cada card quebra coluna corretamente */
 .card {
@@ -1365,6 +1385,61 @@ html, body { overflow-x: hidden; }
   .masonry { columns: 1; }
   .gallery-title { font-size: clamp(32px, 9vw, 48px); }
 }
+
+/* Filtros da galeria, no estilo dos botões do hero */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin: 8px 0 40px;
+}
+
+.gallery-filter {
+  background: none;
+  border: none;
+  color: #9a96a6;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.gallery-filter:hover {
+  color: #fff;
+}
+
+/* tracinho embaixo, igual hero */
+.gallery-filter::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.gallery-filter:hover::after {
+  width: 18px;
+}
+
+.gallery-filter.active {
+  color: #fff;
+}
+
+.gallery-filter.active::after {
+  width: 18px;
+}
+
+
 
 /* ===== Scroll progress + back-to-top (força prioridade) ===== */
 #scrollTop.progress-top{

@@ -129,27 +129,88 @@
 
     </section>
 
-    <!-- GALERIA -->
-    <section class="gallery" id="galeria">
-      <h2 class="gallery-title reveal" data-i18n="gallery.title">Ingrid’s Gallery</h2>
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <h2 class="gallery-title reveal" data-i18n="gallery.title">Ingrid’s Gallery</h2>
 
-      <div class="masonry">
-        <a class="card reveal" href="./cases/dmmb/dmmb.html" data-i18n-attr="aria-label:gallery.open.dmmb" aria-label="Abrir projeto Devaneios">
-          <img src="./cases/dmmb/capa.png" alt="Devaneios de Madrugada" loading="lazy" />
-          <span class="card-caption" data-i18n="gallery.card.dmmb">Diagramação | Devaneios de Madrugada</span>
-        </a>
+  <!-- Filtros -->
+  <div class="gallery-filters reveal"
+       aria-label="Filtrar projetos da galeria"
+       data-i18n-attr="aria-label:gallery.filtersLabel">
+    <button class="gallery-filter active"
+            type="button"
+            data-filter="all"
+            data-i18n="gallery.filter.all">
+      Todos
+    </button>
 
-        <a class="card reveal" href="./cases/worik/worikg.html" data-i18n-attr="aria-label:gallery.open.worik" aria-label="Abrir projeto Worikg">
-          <img src="./cases/worik/capa.png" alt="Capa do projeto Worikg" loading="lazy">
-          <span class="card-caption" data-i18n="gallery.card.worik">Branding | Documentário Worikg</span>
-        </a>
-        
-        <a class="card reveal" href="./cases/pasta-sab/pasta-sab.html" data-i18n-attr="aria-label:gallery.open.pastas" aria-label="Abrir projeto Pastas saborizantes">
-          <img src="./cases/pasta-sab/capa.png" alt="Capa do projeto Pastas saborizantes" loading="lazy">
-          <span class="card-caption" data-i18n="gallery.card.pastas">Embalagens | Pastas saborizantes</span>
-        </a>
-      </div>
-    </section>
+    <button class="gallery-filter"
+            type="button"
+            data-filter="branding"
+            data-i18n="gallery.filter.branding">
+      Branding
+    </button>
+
+    <button class="gallery-filter"
+            type="button"
+            data-filter="impressos"
+            data-i18n="gallery.filter.print">
+      Impressos
+    </button>
+
+    <button class="gallery-filter"
+            type="button"
+            data-filter="web"
+            data-i18n="gallery.filter.web">
+      Web
+    </button>
+  </div>
+
+  <div class="masonry">
+    <!-- DMMB = Impressos -->
+    <a class="card reveal"
+       href="./cases/dmmb/dmmb.html"
+       data-category="impressos"
+       data-i18n-attr="aria-label:gallery.open.dmmb"
+       aria-label="Abrir projeto Devaneios">
+      <img src="./cases/dmmb/capa.png"
+           alt="Devaneios de Madrugada"
+           loading="lazy" />
+      <span class="card-caption" data-i18n="gallery.card.dmmb">
+        Diagramação | Devaneios de Madrugada
+      </span>
+    </a>
+
+    <!-- Worikg = Branding -->
+    <a class="card reveal"
+       href="./cases/worik/worikg.html"
+       data-category="branding"
+       data-i18n-attr="aria-label:gallery.open.worik"
+       aria-label="Abrir projeto Worikg">
+      <img src="./cases/worik/capa.png"
+           alt="Capa do projeto Worikg"
+           loading="lazy">
+      <span class="card-caption" data-i18n="gallery.card.worik">
+        Branding | Documentário Worikg
+      </span>
+    </a>
+    
+    <!-- Pastas = Branding + Impressos -->
+    <a class="card reveal"
+       href="./cases/pasta-sab/pasta-sab.html"
+       data-category="branding impressos"
+       data-i18n-attr="aria-label:gallery.open.pastas"
+       aria-label="Abrir projeto Pastas saborizantes">
+      <img src="./cases/pasta-sab/capa.png"
+           alt="Capa do projeto Pastas saborizantes"
+           loading="lazy">
+      <span class="card-caption" data-i18n="gallery.card.pastas">
+        Embalagens | Pastas saborizantes
+      </span>
+    </a>
+  </div>
+</section>
+
 
 <!-- CONTATO (hero final) -->
 <section class="contact-hero reveal" id="contato">

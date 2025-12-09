@@ -177,7 +177,7 @@ const I18N = {
 
     // SOBRE
     "about.title": "SOBRE MIM",
-    "about.hello": "oiê,",
+    "about.hello": "oi,",
     "about.thisisme": "essa sou eu",
     "about.p1": 'Acredito que design, teatro e escrita são apenas <em>caminhos</em> diferentes pra contar histórias e que <em>toda boa história nasce de um olhar atento.</em>',
     "about.p2": 'Trabalho com criação visual e narrativa, buscando sempre traduzir <em>sensações em forma.</em>',
@@ -197,13 +197,21 @@ const I18N = {
     "skills.n2": 'Trabalho com o que me move: estética, emoção e histórias. No design encontro presença, ritmo e intenção.',
 
     // GALERIA
-    "gallery.title": "Ingrid's Gallery",
-    "gallery.open.dmmb": "Abrir projeto Devaneios",
-    "gallery.open.worik": "Abrir projeto Worikg",
-    "gallery.open.pastas": "Abrir projeto Pastas saborizantes",
-    "gallery.card.dmmb": "Diagramação | Devaneios de Madrugada",
-    "gallery.card.worik": "Branding | Documentário Worikg",
-    "gallery.card.pastas": "Embalagens | Pastas saborizantes",
+    // GALERIA
+"gallery.title": "Ingrid's Gallery",
+"gallery.open.dmmb": "Abrir projeto Devaneios",
+"gallery.open.worik": "Abrir projeto Worikg",
+"gallery.open.pastas": "Abrir projeto Pastas saborizantes",
+"gallery.card.dmmb": "Diagramação | Devaneios de Madrugada",
+"gallery.card.worik": "Branding | Documentário Worikg",
+"gallery.card.pastas": "Embalagens | Pastas saborizantes",
+
+"gallery.filter.all": "Todos",
+"gallery.filter.branding": "Branding",
+"gallery.filter.print": "Impressos",
+"gallery.filter.web": "Web",
+"gallery.filtersLabel": "Filtrar projetos da galeria",
+
 
     // CONTATO
     "contact.title": "Vamos criar?",
@@ -260,14 +268,19 @@ const I18N = {
     "skills.n2": "I work with what moves me: aesthetics, emotion, and stories. In design I find presence, rhythm, and intention.",
 
     // GALLERY
-    "gallery.title": "Ingrid’s Gallery",
-    "gallery.open.dmmb": "Open project Devaneios",
-    "gallery.open.worik": "Open project Worikg",
-    "gallery.open.pastas": "Open project Flavoring Pastes",
-    "gallery.card.dmmb": "Typesetting | Devaneios de Madrugada",
-    "gallery.card.worik": "Branding | Worikg Documentary",
-    "gallery.card.pastas": "Packaging | Flavoring Pastes",
+"gallery.title": "Ingrid’s Gallery",
+"gallery.open.dmmb": "Open project Devaneios",
+"gallery.open.worik": "Open project Worikg",
+"gallery.open.pastas": "Open project Flavoring Pastes",
+"gallery.card.dmmb": "Typesetting | Devaneios de Madrugada",
+"gallery.card.worik": "Branding | Worikg Documentary",
+"gallery.card.pastas": "Packaging | Flavoring Pastes",
 
+"gallery.filter.all": "All",
+"gallery.filter.branding": "Branding",
+"gallery.filter.print": "Print",
+"gallery.filter.web": "Web",
+"gallery.filtersLabel": "Filter gallery projects",
     // CONTACT
     "contact.title": "Shall we create?",
     "contact.text": 'Open to collaborations in <em>design, theatre and writing</em>. Want to chat, send a brief or just say hi?',
@@ -525,3 +538,99 @@ document.querySelectorAll('.circle').forEach(circle => {
   const percent = circle.dataset.percent;
   circle.style.setProperty('--percent', percent);
 });
+
+// =========================
+// Filtro da galeria + animação
+// =========================
+(() => {
+  const filterButtons = $all('.gallery-filter');
+  const cards = $all('.gallery .card');
+  if (!filterButtons.length || !cards.length) return;
+
+  const ANIM_DURATION = 280;
+
+  const setVisibleImmediate = (card, visible) => {
+    card.dataset.visible = visible ? 'true' : 'false';
+    card.style.display = visible ? '' : 'none';
+    card.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    card.classList.remove('filter-hiding', 'filter-show', 'filter-show-active');
+  };
+
+  const showAnimated = (card) => {
+    if (prefersReduced) {
+      setVisibleImmediate(card, true);
+      return;
+    }
+
+    if (card.dataset.visible === 'true') return;
+
+    card.style.display = '';
+    card.setAttribute('aria-hidden', 'false');
+    card.dataset.visible = 'true';
+
+    card.classList.remove('filter-hiding');
+    card.classList.add('filter-show');
+
+    // força reflow pro transition pegar
+    void card.offsetWidth;
+    card.classList.add('filter-show-active');
+
+    setTimeout(() => {
+      card.classList.remove('filter-show', 'filter-show-active');
+    }, ANIM_DURATION + 50);
+  };
+
+  const hideAnimated = (card) => {
+    if (prefersReduced) {
+      setVisibleImmediate(card, false);
+      return;
+    }
+
+    if (card.dataset.visible !== 'true' && card.style.display === 'none') return;
+
+    card.dataset.visible = 'false';
+    card.classList.remove('filter-show', 'filter-show-active');
+    card.classList.add('filter-hiding');
+    card.setAttribute('aria-hidden', 'true');
+
+    setTimeout(() => {
+      if (card.dataset.visible === 'false') {
+        card.style.display = 'none';
+      }
+      card.classList.remove('filter-hiding');
+    }, ANIM_DURATION);
+  };
+
+  const applyFilter = (value, animate) => {
+    const isAll = value === 'all';
+
+    cards.forEach(card => {
+      const raw = card.dataset.category || "";
+      const categories = raw.split(/\s+/).filter(Boolean);
+      const shouldShow = isAll || categories.includes(value);
+
+      if (!animate) {
+        setVisibleImmediate(card, shouldShow);
+      } else if (shouldShow) {
+        showAnimated(card);
+      } else {
+        hideAnimated(card);
+      }
+    });
+  };
+
+  // inicial: tudo visível sem animação
+  applyFilter('all', false);
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const value = btn.dataset.filter || 'all';
+      applyFilter(value, true);
+    });
+  });
+})();
