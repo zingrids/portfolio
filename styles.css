@@ -26,44 +26,6 @@ body {
   margin-top: 20px;
 }
 
-/*sanduicher*/
-.site-header{
-  position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 6vw;
-  background: linear-gradient(#000A, #0000);
-  backdrop-filter: blur(2px);
-}
-.brand{
-  color:#C5AFD5; text-decoration:none;
-  font-family: "Gistesy", cursive; font-size: 60px; letter-spacing:.03em;
-}
-
-.hamburger{
-  width: 40px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer;
-  display: inline-flex; flex-direction: column; justify-content: center; gap: 6px;
-}
-.hamburger span{
-  display:block; height:2px; width:100%; background:#fff; border-radius:2px; transition: transform .25s, opacity .25s;
-}
-.hamburger[aria-expanded="true"] span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
-.hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.hamburger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
-
-/* Drawer lateral */
-.menu-drawer{
-  position: fixed; inset: 0 0 0 auto; width: min(260px, 80vw);
-  background:#0b0b0b; transform: translateX(100%);
-  transition: transform .28s ease; z-index: 60; padding-top: 80px;
-}
-.menu-drawer.open{ transform: translateX(0); }
-.menu-inner{ display:flex; flex-direction:column; gap:16px; padding:0 20px 40px; }
-.menu-link{
-  color:#fff; text-decoration:none; font-family:"Poppins", sans-serif;
-  font-weight:400; letter-spacing:.06em; text-transform:uppercase;
-}
-.menu-link:hover{ color:#C5AFD5; }
-
 /* Fundo escuro */
 .menu-backdrop{
   position: fixed; inset:0; background:#0006; backdrop-filter: blur(1px);
