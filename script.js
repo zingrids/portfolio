@@ -205,6 +205,7 @@ const I18N = {
 "gallery.card.dmmb": "Diagramação | Devaneios de Madrugada",
 "gallery.card.worik": "Branding | Documentário Worikg",
 "gallery.card.pastas": "Embalagens | Pastas saborizantes",
+"gallery.card.life": "Social Media | Life",
 
 "gallery.filter.all": "Todos",
 "gallery.filter.branding": "Branding",
@@ -275,6 +276,7 @@ const I18N = {
 "gallery.card.dmmb": "Typesetting | Devaneios de Madrugada",
 "gallery.card.worik": "Branding | Worikg Documentary",
 "gallery.card.pastas": "Packaging | Flavoring Pastes",
+"gallery.card.life": "Social Media | Life",
 
 "gallery.filter.all": "All",
 "gallery.filter.branding": "Branding",
