@@ -657,26 +657,78 @@ body { font-family: "Poppins", sans-serif; }
 }
 
 /* bloco direito */
-.note-panel {
-  position: relative;
-  text-align: left;
+.note-panel.skills-basics {
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 👈 ESSENCIAL */
+  min-height: 350px;
 }
 
-.note-title {
+.skills-basics-title {
   font-family: "Gistesy", cursive;
   font-size: 100px;
   color: #c5afd5;
   margin-bottom: 0.6rem;
-  text-align: left;
 }
 
-.note-panel p {
-  font-size: 18px;
-  color: #fff;
-  line-height: 1.8;
-  max-width: 900px;
-  text-align: left;
+.basic-skill {
+  max-width: 80px;
 }
+
+.skills-basics-icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.basic-skill img {
+  width: 40px;
+  max-height: 40px;
+}
+
+/* ===== Hover skills básicas ===== */
+
+.basic-skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.basic-skill img {
+  width: 40px;
+  height: auto;
+  transition: transform 0.25s ease;
+}
+
+/* texto escondido por padrão */
+.basic-skill-label {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #c5afd5;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  transition-delay: 0.05s;
+}
+
+/* hover */
+.basic-skill:hover img {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 6px 12px rgba(197,175,213,0.25));
+}
+
+.basic-skill:hover .basic-skill-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 /* responsivo */
 @media (max-width: 980px) {
@@ -1787,4 +1839,140 @@ html, body { overflow-x: hidden; }
     justify-self: stretch;
     text-align: left;       /* acompanha tua regra já existente no CSS */
   }
+}
+
+.ig-preview{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  background: rgba(255,255,255,.04);
+  overflow:hidden;
+  max-width: 980px;
+  margin: 2.5rem auto 0;
+}
+
+.ig-top{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.ig-avatar{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  background: #F57C00; /* laranja */
+  border: 1px solid rgba(255,255,255,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex: 0 0 42px;
+}
+
+.ig-avatar img{
+  width:68%;
+  height:68%;
+  display:block;
+  object-fit: contain;
+}
+
+
+.ig-meta{display:flex; flex-direction:column; line-height:1.2;}
+.ig-user{margin:0; font-weight:600; font-size:14px;}
+.ig-sub{margin:0; font-weight:300; font-size:12px; opacity:.75;}
+
+.ig-cta{
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+
+  color: #fff;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+.ig-cta:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.22);
+  transform: translateY(-1px);
+}
+
+.ig-cta:active{
+  transform: translateY(0px);
+  opacity: .9;
+}
+
+.ig-cta:focus-visible{
+  outline: 2px solid rgba(255,255,255,.45);
+  outline-offset: 3px;
+}
+
+.ig-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+
+.ig-item{
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius: 14px;
+  overflow:hidden;
+}
+
+.ig-item img{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display:block;
+  transition: transform .25s ease;
+}
+
+.ig-item:hover img{ transform: scale(1.03); }
+
+.ig-modal{
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.ig-modal.is-open{ display:flex; }
+
+.ig-full{
+  max-width: min(920px, 92vw);
+  max-height: 86vh;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.ig-close{
+  position:absolute;
+  top: 18px;
+  right: 18px;
+  width:42px;height:42px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  cursor:pointer;
 }

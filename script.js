@@ -205,7 +205,7 @@ const I18N = {
 "gallery.card.dmmb": "Diagramação | Devaneios de Madrugada",
 "gallery.card.worik": "Branding | Documentário Worikg",
 "gallery.card.pastas": "Embalagens | Pastas saborizantes",
-"gallery.card.life": "Social Media | Life",
+"gallery.card.life": "Branding em Aplicação | Life",
 
 "gallery.filter.all": "Todos",
 "gallery.filter.branding": "Branding",
@@ -636,3 +636,29 @@ document.querySelectorAll('.circle').forEach(circle => {
     });
   });
 })();
+
+document.querySelectorAll(".ig-preview").forEach((block) => {
+  const modal = block.querySelector(".ig-modal");
+  const full = block.querySelector(".ig-full");
+  const close = block.querySelector(".ig-close");
+
+  block.querySelectorAll(".ig-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const src = btn.getAttribute("data-full");
+      full.src = src;
+      full.alt = btn.querySelector("img")?.alt || "";
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  const hide = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    full.src = "";
+  };
+
+  close.addEventListener("click", hide);
+  modal.addEventListener("click", (e) => { if (e.target === modal) hide(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") hide(); });
+});
