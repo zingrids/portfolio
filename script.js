@@ -662,3 +662,65 @@ document.querySelectorAll(".ig-preview").forEach((block) => {
   modal.addEventListener("click", (e) => { if (e.target === modal) hide(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") hide(); });
 });
+
+(function () {
+  const carousels = document.querySelectorAll('[data-carousel="life-inst"]');
+
+  carousels.forEach((viewport) => {
+    const root = viewport.closest(".inst-carousel");
+    const slides = Array.from(viewport.querySelectorAll(".inst-slide"));
+    const prevBtn = viewport.querySelector(".inst-arrow.prev");
+    const nextBtn = viewport.querySelector(".inst-arrow.next");
+    const dotsWrap = root.querySelector(".inst-dots");
+    const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll(".dot")) : [];
+    const labelEl = root.querySelector(".inst-caption-label");
+    const textEl = root.querySelector(".inst-caption-text");
+
+    const captions = [
+      { label: "Brindes", text: "Aplicação da identidade em itens de relacionamento e presença de marca no cotidiano." },
+      { label: "Ambiente", text: "Aplicação da marca em suportes físicos, reforçando consistência em espaços e atendimento." },
+      { label: "Promocional", text: "Materiais sazonais e promocionais mantendo linguagem orgânica e reconhecimento imediato." },
+      { label: "Institucional", text: "Peças institucionais e apoio comercial com clareza e unidade visual." },
+    ];
+
+    let index = slides.findIndex(s => s.classList.contains("is-active"));
+    if (index < 0) index = 0;
+
+    const setActive = (i) => {
+      slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+      dots.forEach((d, idx) => d.classList.toggle("is-active", idx === i));
+
+      const cap = captions[i] || captions[0];
+      if (labelEl) labelEl.textContent = cap.label;
+      if (textEl) textEl.textContent = cap.text;
+
+      index = i;
+    };
+
+    const next = () => setActive((index + 1) % slides.length);
+    const prev = () => setActive((index - 1 + slides.length) % slides.length);
+
+    prevBtn?.addEventListener("click", prev);
+    nextBtn?.addEventListener("click", next);
+
+    dots.forEach((dot, i) => dot.addEventListener("click", () => setActive(i)));
+
+    // Autoplay suave
+    let timer = null;
+    const start = () => {
+      stop();
+      timer = setInterval(next, 4500);
+    };
+    const stop = () => {
+      if (timer) clearInterval(timer);
+      timer = null;
+    };
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+
+    // inicializa
+    setActive(index);
+    start();
+  });
+})();
