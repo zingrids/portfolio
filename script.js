@@ -724,4 +724,3 @@ document.querySelectorAll(".ig-preview").forEach((block) => {
     start();
   });
 })();
-
