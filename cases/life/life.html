@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,20 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <title>Life — Aplicação de Branding</title>
 </head>
+
 <body>
 
   <!-- IDIOMA -->
   <header class="idioma">
     <button class="lang-btn active" data-lang="pt">PT</button>
-    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="en" data-i18n="lang.en">EN</button>
+    <button class="lang-btn" data-lang="es" data-i18n="lang.es">ES</button>
   </header>
 
   <!-- HERO -->
   <section class="case-hero reveal">
     <h1 class="case-title">Aplicação de Branding</h1>
-   <!--<section class="case-banner">
-      <div class="banner-bg" style="background-image: url('./banner.png')" aria-hidden="true"></div>
-    </section>-->
   </section>
 
   <!-- TRINCA -->
@@ -59,7 +59,7 @@
   <section class="case-flow">
 
     <!-- Linguagem Visual -->
-    <section class="flow-block block-mood">
+    <section class="flow-block">
       <div class="copy">
         <h2 class="flow-title left">LINGUAGEM VISUAL</h2>
         <p class="flow-desc">
@@ -75,73 +75,75 @@
     </section>
 
     <!-- Social Media -->
-    <section class="flow-block block-mock invert">
+    <section class="flow-block invert">
       <section class="ig-preview reveal" aria-label="Prévia do feed da Life">
-  <header class="ig-top">
-    <div class="ig-avatar" aria-hidden="true">
-  <img src="./ig/life-logo.svg" alt="">
-</div>
+        <header class="ig-top">
+          <div class="ig-avatar" aria-hidden="true">
+            <img src="./ig/life-logo.svg" alt="">
+          </div>
 
-    <div class="ig-meta">
-      <p class="ig-user">life.fibra</p>
-      <p class="ig-sub">Seleção de posts</p>
-    </div>
-    <a class="ig-cta" href="https://www.instagram.com/life.fibra/" target="_blank" rel="noreferrer">
-      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-      Ver no Instagram
-    </a>
-  </header>
+          <div class="ig-meta">
+            <p class="ig-user">life.fibra</p>
+            <p class="ig-sub">Seleção de posts</p>
+          </div>
+          <a class="ig-cta" href="https://www.instagram.com/life.fibra/" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Ver no Instagram
+          </a>
+        </header>
 
-  <div class="ig-grid">
+        <div class="ig-grid">
 
-  <!-- Linha 1 -->
-  <button class="ig-item" data-full="./ig/ig-carr-1.jpg" aria-label="Post Life: Apps para organizar 2025">
-    <img src="./ig/ig-carr-1.jpg" alt="Capa de carrossel Life sobre apps para organizar 2025" loading="lazy">
-  </button>
+          <!-- Linha 1 -->
+          <button class="ig-item" data-full="./ig/ig-carr-1.jpg" aria-label="Post Life: Apps para organizar 2025">
+            <img src="./ig/ig-carr-1.jpg" alt="Capa de carrossel Life sobre apps para organizar 2025" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst.jpg" aria-label="Post Life: App da Life">
-    <img src="./ig/ig-inst.jpg" alt="Post Life apresentando o aplicativo da Life" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst.jpg" aria-label="Post Life: App da Life">
+            <img src="./ig/ig-inst.jpg" alt="Post Life apresentando o aplicativo da Life" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst-2.jpg" aria-label="Post Life: Fale Conosco">
-    <img src="./ig/ig-inst-2.jpg" alt="Post Life com ilustração de atendimento e fale conosco" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst-2.jpg" aria-label="Post Life: Fale Conosco">
+            <img src="./ig/ig-inst-2.jpg" alt="Post Life com ilustração de atendimento e fale conosco" loading="lazy">
+          </button>
 
-  <!-- Linha 2 -->
-  <button class="ig-item" data-full="./ig/ig-inst-3.jpg" aria-label="Post Life: Fatura PIX">
-    <img src="./ig/ig-inst-3.jpg" alt="Post Life sobre pagamento de fatura via PIX" loading="lazy">
-  </button>
+          <!-- Linha 2 -->
+          <button class="ig-item" data-full="./ig/ig-inst-3.jpg" aria-label="Post Life: Fatura PIX">
+            <img src="./ig/ig-inst-3.jpg" alt="Post Life sobre pagamento de fatura via PIX" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst-4.jpg" aria-label="Post Life: 4K seguidores">
-    <img src="./ig/ig-inst-4.jpg" alt="Post comemorativo da Life celebrando 4 mil seguidores" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst-4.jpg" aria-label="Post Life: 4K seguidores">
+            <img src="./ig/ig-inst-4.jpg" alt="Post comemorativo da Life celebrando 4 mil seguidores" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst-5.jpg" aria-label="Post Life: Outubro Rosa">
-    <img src="./ig/ig-inst-5.jpg" alt="Post da Life sobre o Outubro Rosa e prevenção ao câncer de mama" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst-5.jpg" aria-label="Post Life: Outubro Rosa">
+            <img src="./ig/ig-inst-5.jpg" alt="Post da Life sobre o Outubro Rosa e prevenção ao câncer de mama"
+              loading="lazy">
+          </button>
 
-  <!-- Linha 3 -->
-  <button class="ig-item" data-full="./ig/ig-inst-6.jpg" aria-label="Post Life: Dia do Cliente">
-    <img src="./ig/ig-inst-6.jpg" alt="Post comemorativo do Dia do Cliente da Life" loading="lazy">
-  </button>
+          <!-- Linha 3 -->
+          <button class="ig-item" data-full="./ig/ig-inst-6.jpg" aria-label="Post Life: Dia do Cliente">
+            <img src="./ig/ig-inst-6.jpg" alt="Post comemorativo do Dia do Cliente da Life" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst-7.jpg" aria-label="Post Life: Dia da Internet">
-    <img src="./ig/ig-inst-7.jpg" alt="Post da Life em comemoração ao Dia da Internet" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst-7.jpg" aria-label="Post Life: Dia da Internet">
+            <img src="./ig/ig-inst-7.jpg" alt="Post da Life em comemoração ao Dia da Internet" loading="lazy">
+          </button>
 
-  <button class="ig-item" data-full="./ig/ig-inst-8.jpg" aria-label="Post Life: Compartilhe o Wi-Fi">
-    <img src="./ig/ig-inst-8.jpg" alt="Post Life com dica sobre compartilhamento de senha do Wi-Fi" loading="lazy">
-  </button>
+          <button class="ig-item" data-full="./ig/ig-inst-8.jpg" aria-label="Post Life: Compartilhe o Wi-Fi">
+            <img src="./ig/ig-inst-8.jpg" alt="Post Life com dica sobre compartilhamento de senha do Wi-Fi"
+              loading="lazy">
+          </button>
 
-</div>
+        </div>
 
 
-  <!-- modal simples -->
-  <div class="ig-modal" aria-hidden="true">
-    <button class="ig-close" aria-label="Fechar">✕</button>
-    <img class="ig-full" alt="" />
-  </div>
-</section>
+        <!-- modal simples -->
+        <div class="ig-modal" aria-hidden="true">
+          <button class="ig-close" aria-label="Fechar">✕</button>
+          <img class="ig-full" alt="" />
+        </div>
+      </section>
 
       <div class="copy align-right">
         <h2 class="flow-title right">SOCIAL MEDIA</h2>
@@ -154,7 +156,7 @@
     </section>
 
     <!-- Comunicação Institucional -->
-    <section class="flow-block block-mood">
+    <section class="flow-block">
       <div class="copy">
         <h2 class="flow-title left">COMUNICAÇÃO INSTITUCIONAL</h2>
         <p class="flow-desc">
@@ -164,54 +166,53 @@
         </p>
       </div>
       <div class="inst-carousel reveal" aria-label="Carrossel de aplicações institucionais e comerciais">
+        <div class="inst-carousel-top">
+          <p class="inst-carousel-title">Aplicações institucionais e comerciais</p>
+          <p class="inst-carousel-sub">Mockups selecionados para demonstrar escala e consistência do branding</p>
+        </div>
 
-  <div class="inst-carousel-top">
-    <p class="inst-carousel-title">Aplicações institucionais e comerciais</p>
-    <p class="inst-carousel-sub">Mockups selecionados para demonstrar escala e consistência do branding</p>
-  </div>
+        <div class="inst-carousel-viewport" data-carousel="life-inst">
+          <button class="inst-arrow prev" type="button" aria-label="Anterior">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
 
-  <div class="inst-carousel-viewport" data-carousel="life-inst">
-    <button class="inst-arrow prev" type="button" aria-label="Anterior">
-      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-    </button>
+          <div class="inst-track">
+            <figure class="inst-slide is-active">
+              <img src="./mockups/caneca.png" alt="Mockup de caneca institucional da Life" loading="lazy">
+            </figure>
 
-    <div class="inst-track">
-      <figure class="inst-slide is-active">
-        <img src="./mockups/caneca.png" alt="Mockup de caneca institucional da Life" loading="lazy">
-      </figure>
+            <figure class="inst-slide">
+              <img src="./mockups/id-porta.png" alt="Mockup de identificador de porta da Life pendurado em maçaneta"
+                loading="lazy">
+            </figure>
 
-      <figure class="inst-slide">
-        <img src="./mockups/id-porta.png" alt="Mockup de identificador de porta da Life pendurado em maçaneta" loading="lazy">
-      </figure>
+            <figure class="inst-slide">
+              <img src="./mockups/leque.png" alt="Mockup de leques de papel promocionais da Life" loading="lazy">
+            </figure>
 
-      <figure class="inst-slide">
-        <img src="./mockups/leque.png" alt="Mockup de leques de papel promocionais da Life" loading="lazy">
-      </figure>
+            <figure class="inst-slide">
+              <img src="./mockups/adesivos.png" alt="Mockup de adesivo institucional da Life" loading="lazy">
+            </figure>
+          </div>
 
-      <figure class="inst-slide">
-        <img src="./inst/adesivo.jpg" alt="Mockup de adesivo institucional da Life" loading="lazy">
-      </figure>
-    </div>
+          <button class="inst-arrow next" type="button" aria-label="Próximo">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
 
-    <button class="inst-arrow next" type="button" aria-label="Próximo">
-      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-    </button>
-  </div>
+        <div class="inst-caption" aria-live="polite">
+          <span class="inst-caption-label">Brindes</span>
+          <span class="inst-caption-text">Aplicação da identidade em itens de relacionamento e presença de marca no
+            cotidiano.</span>
+        </div>
 
-  <div class="inst-caption" aria-live="polite">
-    <span class="inst-caption-label">Brindes</span>
-    <span class="inst-caption-text">Aplicação da identidade em itens de relacionamento e presença de marca no cotidiano.</span>
-  </div>
-
-  <div class="inst-dots" role="tablist" aria-label="Seleção de slide">
-    <button class="dot is-active" type="button" aria-label="Slide 1"></button>
-    <button class="dot" type="button" aria-label="Slide 2"></button>
-    <button class="dot" type="button" aria-label="Slide 3"></button>
-    <button class="dot" type="button" aria-label="Slide 4"></button>
-  </div>
-
-</div>
-
+        <div class="inst-dots" role="tablist" aria-label="Seleção de slide">
+          <button class="dot is-active" type="button" aria-label="Slide 1"></button>
+          <button class="dot" type="button" aria-label="Slide 2"></button>
+          <button class="dot" type="button" aria-label="Slide 3"></button>
+          <button class="dot" type="button" aria-label="Slide 4"></button>
+        </div>
+      </div>
     </section>
 
   </section>
@@ -237,14 +238,14 @@
       <circle class="bar" cx="22" cy="22" r="18"></circle>
     </svg>
     <span class="chevron" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m18 15-6-6-6 6"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6" />
       </svg>
     </span>
   </button>
 
   <script src="../../script.js" defer></script>
 </body>
+
 </html>

@@ -1,351 +1,302 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/svg+xml" href="./assets/flor.svg" />
-    <link href="https://fonts.cdnfonts.com/css/lostar" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <title data-i18n="meta.title">Portfólio Ingrid Lima</title>
-  </head>
 
- <body>
-    <!-- IDIOMA -->
-    <header class="idioma">
-      <button class="lang-btn active" data-lang="pt" data-i18n="lang.pt">PT</button>
-      <button class="lang-btn" data-lang="en" data-i18n="lang.en">EN</button>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="./assets/flor.svg" />
+  <link href="https://fonts.cdnfonts.com/css/lostar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <title data-i18n="meta.title">Portfólio Ingrid Lima</title>
+</head>
 
-    <!-- HERO -->
-    <main class="hero" id="top">
-      <!-- shapes de fundo (parallax) -->
-      <div class="shape s1" data-speed="-0.2" aria-hidden="true"></div>
-      <div class="shape s2" data-speed="0.35" aria-hidden="true"></div>
-      <div class="shape s3" data-speed="0.1" aria-hidden="true"></div>
+<body>
+  <!-- IDIOMA -->
+  <header class="idioma">
+    <button class="lang-btn active" data-lang="pt" data-i18n="lang.pt">PT</button>
+    <button class="lang-btn" data-lang="en" data-i18n="lang.en">EN</button>
+    <button class="lang-btn" data-lang="es" data-i18n="lang.es">ES</button>
+  </header>
 
-      <!-- conteúdo central -->
-      <div class="hero-wrap">
-        <h1 class="hero-title reveal" data-i18n="hero.title">PORTFÓLIO</h1>
-        <p class="hero-sub reveal" data-i18n="hero.subtitle">Ingrid Lima</p>
+  <!-- HERO -->
+  <main class="hero" id="top">
+    <!-- shapes de fundo (parallax) -->
+    <div class="shape s1" data-speed="-0.2" aria-hidden="true"></div>
+    <div class="shape s2" data-speed="0.35" aria-hidden="true"></div>
+    <div class="shape s3" data-speed="0.1" aria-hidden="true"></div>
 
-        <!-- navegação por âncoras -->
-        <nav class="hero-anchors reveal" aria-label="Seções" data-i18n-attr="aria-label:nav.sections">
-          <a href="#skills" data-i18n="hero.nav.skills">Skills</a>
-          <a href="#galeria" data-i18n="hero.nav.gallery">Galeria</a>
-          <a href="#contato" data-i18n="hero.nav.contact">Contato</a>
-        </nav>
-      </div>
-    </main>
+    <!-- conteúdo central -->
+    <div class="hero-wrap">
+      <h1 class="hero-title reveal" data-i18n="hero.title">PORTFÓLIO</h1>
+      <p class="hero-sub reveal" data-i18n="hero.subtitle">Ingrid Lima</p>
 
-<!-- SOBRE -->
-<section class="about about-v2" id="sobre">
-  <div class="about-wrap">
-    <h2 class="about-title reveal" data-i18n="about.title">SOBRE MIM</h2>
-
-    <div class="about-grid">
-      <div class="about-copy">
-        <p class="about-hello reveal">
-          <span class="hand" data-i18n="about.hello">oi,</span>
-          <span data-i18n="about.thisisme">essa sou eu</span>
-        </p>
-
-        <!-- placeholders são substituídos via i18n -->
-        <p class="reveal" data-i18n-html="about.p1">.</p>
-        <p class="reveal" data-i18n-html="about.p2">.</p>
-        <p class="reveal" data-i18n="about.p3">.</p>
-      </div>
-
-      <figure class="about-photo reveal">
-        <img src="./assets/foto-ingrid.png" alt="Retrato de Ingrid Lima" data-i18n-attr="alt:about.photoAlt"/>
-      </figure>
-    </div>
-  </div>
-</section>
-
-    <!--SKILLS-->
-    <section class="skills" id="skills">
-
-      <img src="./assets/flower-left.svg" alt="" class="bg-flower left">
-      <img src="./assets/flower-right.svg" alt="" class="bg-flower right">
-
-      <h2 class="skills-title reveal" data-i18n="skills.title">Skills</h2>
-
-      <div class="skills-grid reveal">
-        <div class="skill">
-  <div class="circle" data-percent="80">
-    <img src="./assets/icons/ai.svg" alt="Illustrator" />
-  </div>
-  <h3>Illustrator</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="90">
-    <img src="./assets/icons/ps.svg" alt="Photoshop" />
-  </div>
-  <h3>Photoshop</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="75">
-    <img src="./assets/icons/id.svg" alt="InDesign" />
-  </div>
-  <h3>InDesign</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="65">
-    <img src="./assets/icons/premiere.svg" alt="Premiere Pro" />
-  </div>
-  <h3>Premiere</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="85">
-    <img src="./assets/icons/figma.svg" alt="Figma" />
-  </div>
-  <h3>Figma</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="75">
-    <img src="./assets/icons/capcut.svg" alt="CapCut" />
-  </div>
-  <h3>CapCut</h3>
-</div>
-
-<div class="skill">
-  <div class="circle" data-percent="70">
-    <img src="./assets/icons/canva.svg" alt="Canva" />
-  </div>
-  <h3>Canva</h3>
-</div>
-
-      </div>
-
-        <div class="note-panel skills-basics reveal">
-  <p class="skills-basics-title">
-    Em estudo
-  </p>
-
-  <div class="skills-basics-icons">
-    <div class="basic-skill">
-      <img src="./assets/icons/html.svg" alt="HTML" />
-      <span class="basic-skill-label">HTML</span>
-    </div>
-
-    <div class="basic-skill">
-      <img src="./assets/icons/css.svg" alt="CSS" />
-      <span class="basic-skill-label">CSS</span>
-    </div>
-
-    <div class="basic-skill">
-      <img src="./assets/icons/js.svg" alt="JavaScript" />
-      <span class="basic-skill-label">JavaScript</span>
-    </div>
-  </div>
-</div>
-
-      </div>
-
-    </section>
-
-<!-- GALERIA -->
-<section class="gallery" id="galeria">
-  <h2 class="gallery-title reveal" data-i18n="gallery.title">Ingrid’s Gallery</h2>
-
-  <!-- Filtros -->
-  <div class="gallery-filters reveal"
-       aria-label="Filtrar projetos da galeria"
-       data-i18n-attr="aria-label:gallery.filtersLabel">
-    <button class="gallery-filter active"
-            type="button"
-            data-filter="all"
-            data-i18n="gallery.filter.all">
-      Todos
-    </button>
-
-    <button class="gallery-filter"
-            type="button"
-            data-filter="branding"
-            data-i18n="gallery.filter.branding">
-      Branding
-    </button>
-
-    <button class="gallery-filter"
-            type="button"
-            data-filter="impressos"
-            data-i18n="gallery.filter.print">
-      Impressos
-    </button>
-
-    <button class="gallery-filter"
-            type="button"
-            data-filter="web"
-            data-i18n="gallery.filter.web">
-      Web
-    </button>
-  </div>
-
-  <div class="masonry">
-    <!-- DMMB = Impressos -->
-    <a class="card reveal"
-       href="./cases/dmmb/dmmb.html"
-       data-category="impressos"
-       data-i18n-attr="aria-label:gallery.open.dmmb"
-       aria-label="Abrir projeto Devaneios">
-      <img src="./cases/dmmb/capa.png"
-           alt="Devaneios de Madrugada"
-           loading="lazy" />
-      <span class="card-caption" data-i18n="gallery.card.dmmb">
-        Diagramação | Devaneios de Madrugada
-      </span>
-    </a>
-
-    <!-- Worikg = Branding -->
-    <a class="card reveal"
-       href="./cases/worik/worikg.html"
-       data-category="branding"
-       data-i18n-attr="aria-label:gallery.open.worik"
-       aria-label="Abrir projeto Worikg">
-      <img src="./cases/worik/capa.png"
-           alt="Capa do projeto Worikg"
-           loading="lazy">
-      <span class="card-caption" data-i18n="gallery.card.worik">
-        Branding | Documentário Worikg
-      </span>
-    </a>
-    
-    <!-- Pastas = Branding + Impressos -->
-    <a class="card reveal"
-       href="./cases/pasta-sab/pasta-sab.html"
-       data-category="branding impressos"
-       data-i18n-attr="aria-label:gallery.open.pastas"
-       aria-label="Abrir projeto Pastas saborizantes">
-      <img src="./cases/pasta-sab/capa.png"
-           alt="Capa do projeto Pastas saborizantes"
-           loading="lazy">
-      <span class="card-caption" data-i18n="gallery.card.pastas">
-        Embalagens | Pastas saborizantes
-      </span>
-    </a>
-
-    <!-- Life, social media -->
-    <a class="card reveal"
-       href="./cases/life/life.html"
-       data-category="branding web"
-       data-i18n-attr="aria-label:gallery.open.pastas"
-       aria-label="Abrir projeto Pastas saborizantes">
-      <img src="./cases/life/capa.png"
-           alt="Capa do projeto Social media life"
-           loading="lazy">
-      <span class="card-caption" data-i18n="gallery.card.life">
-        Social media | Life
-      </span>
-    </a>
- 
-  
-
-  <!-- west, kv -->
-    <a class="card reveal"
-       href="./cases/west-fibra/west.html"
-       data-category="branding web"
-       data-i18n-attr="aria-label:gallery.open.pastas"
-       aria-label="Abrir projeto KV West">
-      <img src="./cases/west-fibra/capa.png"
-           alt="Capa do projeto KV West Fibra"
-           loading="lazy">
-      <span class="card-caption" data-i18n="gallery.card.life">
-        Key Visual | West
-      </span>
-    </a>
- 
-  </div>
-</section>
-
-
-<!-- CONTATO (hero final) -->
-<section class="contact-hero reveal" id="contato">
-  <span class="ch-stars" aria-hidden="true"></span>
-
-  <div class="ch-inner">
-    <figure class="ch-art" aria-hidden="true">
-      <img src="./assets/gif/ingrid-pixel.gif" alt="" />
-    </figure>
-
-    <div class="ch-copy">
-      <h2 class="ch-title" data-i18n="contact.title">Vamos criar?</h2>
-
-      <p class="ch-text" data-i18n-html="contact.text">
-        Aberta a colaborações em <em>design e escrita</em>. Quer trocar uma ideia, enviar um briefing ou só dizer oi?
-      </p>
-
-      <div class="ch-actions">
-        <!-- BOTÃO WHATSAPP (principal) -->
-        <a href="https://wa.me/5514981977720?text=Oi!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20desenvolver%20um%20projeto!"
-           class="btn-solid"
-           target="_blank"
-           rel="noopener noreferrer"
-           data-i18n="contact.ctaEmail">
-          Me manda um oi ;)
-        </a>
-
-        <!-- BOTÃO CURRÍCULO -->
-        <a id="cv-link"
-           href="./assets/curriculo-Ingrid-Lima.pdf"
-           download
-           class="btn-ghost"
-           data-i18n="contact.ctaCv">
-          Baixar currículo
-        </a>
-      </div>
-
-      <!-- ÍCONES SOCIAIS -->
-      <nav class="ch-social"
-           aria-label="Redes sociais"
-           data-i18n-attr="aria-label:contact.socialLabel">
-
-        <!-- EMAIL COM ÍCONE -->
-        <a href="mailto:ingridrsflima@gmail.com" target="_blank" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-
-        <a href="https://www.linkedin.com/in/ingridrfslima" target="_blank" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-
-        <a href="https://www.behance.net/ingridslima" target="_blank" aria-label="Behance">
-          <i class="fa-brands fa-behance"></i>
-        </a>
-
-        <a href="https://github.com/zingrids" target="_blank" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
+      <!-- navegação por âncoras -->
+      <nav class="hero-anchors reveal" aria-label="Seções" data-i18n-attr="aria-label:nav.sections">
+        <a href="#skills" data-i18n="hero.nav.skills">Skills</a>
+        <a href="#galeria" data-i18n="hero.nav.gallery">Galeria</a>
+        <a href="#contato" data-i18n="hero.nav.contact">Contato</a>
       </nav>
     </div>
-  </div>
-</section>
+  </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <p class="footer-credit" data-i18n="footer.credit">© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘</p>
-    </footer>
+  <!-- SOBRE -->
+  <section class="about about-v2" id="sobre">
+    <div class="about-wrap">
+      <h2 class="about-title reveal" data-i18n="about.title">SOBRE MIM</h2>
 
-    <button id="scrollTop" class="progress-top" aria-label="Voltar ao topo" data-i18n-attr="aria-label:nav.backTop">
-      <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
-        <circle class="bg"  cx="22" cy="22" r="18"></circle>
-        <circle class="bar" cx="22" cy="22" r="18"></circle>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="about-hello reveal">
+            <span class="hand" data-i18n="about.hello">oi,</span>
+            <span data-i18n="about.thisisme">essa sou eu</span>
+          </p>
+
+          <!-- placeholders são substituídos via i18n -->
+          <p class="reveal" data-i18n-html="about.p1">.</p>
+          <p class="reveal" data-i18n-html="about.p2">.</p>
+          <p class="reveal" data-i18n="about.p3">.</p>
+        </div>
+
+        <figure class="about-photo reveal">
+          <img src="./assets/foto-ingrid.png" alt="Retrato de Ingrid Lima" data-i18n-attr="alt:about.photoAlt" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!--SKILLS-->
+  <section class="skills" id="skills">
+
+    <img src="./assets/flower-left.svg" alt="" class="bg-flower left">
+    <img src="./assets/flower-right.svg" alt="" class="bg-flower right">
+
+    <h2 class="skills-title reveal" data-i18n="skills.title">Skills</h2>
+
+    <div class="skills-grid reveal">
+      <div class="skill">
+        <div class="circle" data-percent="80">
+          <img src="./assets/icons/ai.svg" alt="Illustrator" />
+        </div>
+        <h3>Illustrator</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="90">
+          <img src="./assets/icons/ps.svg" alt="Photoshop" />
+        </div>
+        <h3>Photoshop</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="75">
+          <img src="./assets/icons/id.svg" alt="InDesign" />
+        </div>
+        <h3>InDesign</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="65">
+          <img src="./assets/icons/premiere.svg" alt="Premiere Pro" />
+        </div>
+        <h3>Premiere</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="85">
+          <img src="./assets/icons/figma.svg" alt="Figma" />
+        </div>
+        <h3>Figma</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="75">
+          <img src="./assets/icons/capcut.svg" alt="CapCut" />
+        </div>
+        <h3>CapCut</h3>
+      </div>
+
+      <div class="skill">
+        <div class="circle" data-percent="70">
+          <img src="./assets/icons/canva.svg" alt="Canva" />
+        </div>
+        <h3>Canva</h3>
+      </div>
+    </div>
+
+    <div class="note-panel skills-basics reveal">
+      <p class="skills-basics-title">
+        Em estudo
+      </p>
+
+      <div class="skills-basics-icons">
+        <div class="basic-skill">
+          <img src="./assets/icons/html.svg" alt="HTML" />
+          <span class="basic-skill-label">HTML</span>
+        </div>
+
+        <div class="basic-skill">
+          <img src="./assets/icons/css.svg" alt="CSS" />
+          <span class="basic-skill-label">CSS</span>
+        </div>
+
+        <div class="basic-skill">
+          <img src="./assets/icons/js.svg" alt="JavaScript" />
+          <span class="basic-skill-label">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GALERIA -->
+  <section class="gallery" id="galeria">
+    <h2 class="gallery-title reveal" data-i18n="gallery.title">Ingrid’s Gallery</h2>
+
+    <!-- Filtros -->
+    <div class="gallery-filters reveal" aria-label="Filtrar projetos da galeria"
+      data-i18n-attr="aria-label:gallery.filtersLabel">
+      <button class="gallery-filter active" type="button" data-filter="all" data-i18n="gallery.filter.all">
+        Todos
+      </button>
+
+      <button class="gallery-filter" type="button" data-filter="branding" data-i18n="gallery.filter.branding">
+        Branding
+      </button>
+
+      <button class="gallery-filter" type="button" data-filter="impressos" data-i18n="gallery.filter.print">
+        Impressos
+      </button>
+
+      <button class="gallery-filter" type="button" data-filter="web" data-i18n="gallery.filter.web">
+        Web
+      </button>
+    </div>
+
+    <div class="masonry">
+      <!-- DMMB = Impressos -->
+      <a class="card reveal" href="./cases/dmmb/dmmb.html" data-category="impressos"
+        data-i18n-attr="aria-label:gallery.open.dmmb" aria-label="Abrir projeto Devaneios">
+        <img src="./cases/dmmb/capa.png" alt="Devaneios de Madrugada" loading="lazy" />
+        <span class="card-caption" data-i18n="gallery.card.dmmb">
+          Diagramação | Devaneios de Madrugada
+        </span>
+      </a>
+
+      <!-- Worikg = Branding -->
+      <a class="card reveal" href="./cases/worik/worikg.html" data-category="branding"
+        data-i18n-attr="aria-label:gallery.open.worik" aria-label="Abrir projeto Worikg">
+        <img src="./cases/worik/capa.png" alt="Capa do projeto Worikg" loading="lazy">
+        <span class="card-caption" data-i18n="gallery.card.worik">
+          Branding | Documentário Worikg
+        </span>
+      </a>
+
+      <!-- Pastas = Branding + Impressos -->
+      <a class="card reveal" href="./cases/pasta-sab/pasta-sab.html" data-category="branding impressos"
+        data-i18n-attr="aria-label:gallery.open.pastas" aria-label="Abrir projeto Pastas saborizantes">
+        <img src="./cases/pasta-sab/capa.png" alt="Capa do projeto Pastas saborizantes" loading="lazy">
+        <span class="card-caption" data-i18n="gallery.card.pastas">
+          Embalagens | Pastas saborizantes
+        </span>
+      </a>
+
+      <!-- Life, social media -->
+      <a class="card reveal" href="./cases/life/life.html" data-category="branding web"
+        data-i18n-attr="aria-label:gallery.open.pastas" aria-label="Abrir projeto Pastas saborizantes">
+        <img src="./cases/life/capa.png" alt="Capa do projeto Social media life" loading="lazy">
+        <span class="card-caption" data-i18n="gallery.card.life">
+          Social media | Life
+        </span>
+      </a>
+
+      <!-- west, kv -->
+      <a class="card reveal" href="./cases/west-fibra/west.html" data-category="branding web"
+        data-i18n-attr="aria-label:gallery.open.pastas" aria-label="Abrir projeto KV West">
+        <img src="./cases/west-fibra/capa.png" alt="Capa do projeto KV West Fibra" loading="lazy">
+        <span class="card-caption" data-i18n="gallery.card.life">
+          Key Visual | West
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- CONTATO (hero final) -->
+  <section class="contact-hero reveal" id="contato">
+    <span class="ch-stars" aria-hidden="true"></span>
+
+    <div class="ch-inner">
+      <figure class="ch-art" aria-hidden="true">
+        <img src="./assets/gif/ingrid-pixel.gif" alt="" />
+      </figure>
+
+      <div class="ch-copy">
+        <h2 class="ch-title" data-i18n="contact.title">Vamos criar?</h2>
+
+        <p class="ch-text" data-i18n-html="contact.text">
+          Aberta a colaborações em <em>design e escrita</em>. Quer trocar uma ideia, enviar um briefing ou só dizer oi?
+        </p>
+
+        <div class="ch-actions">
+          <!-- BOTÃO WHATSAPP (principal) -->
+          <a href="https://wa.me/5514981977720?text=Oi!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20desenvolver%20um%20projeto!"
+            class="btn-solid" target="_blank" rel="noopener noreferrer" data-i18n="contact.ctaEmail">
+            Me manda um oi ;)
+          </a>
+
+          <!-- BOTÃO CURRÍCULO -->
+          <a id="cv-link" href="./assets/curriculo-Ingrid-Lima.pdf" download class="btn-ghost"
+            data-i18n="contact.ctaCv">
+            Baixar currículo
+          </a>
+        </div>
+
+        <!-- ÍCONES SOCIAIS -->
+        <nav class="ch-social" aria-label="Redes sociais" data-i18n-attr="aria-label:contact.socialLabel">
+
+          <!-- EMAIL COM ÍCONE -->
+          <a href="mailto:ingridrsflima@gmail.com" target="_blank" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/ingridrfslima" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+
+          <a href="https://www.behance.net/ingridslima" target="_blank" aria-label="Behance">
+            <i class="fa-brands fa-behance"></i>
+          </a>
+
+          <a href="https://github.com/zingrids" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-credit" data-i18n="footer.credit">© 2025 Ingrid Lima — site projetado e desenvolvido por mim 🌘</p>
+  </footer>
+
+  <button id="scrollTop" class="progress-top" aria-label="Voltar ao topo" data-i18n-attr="aria-label:nav.backTop">
+    <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="bg" cx="22" cy="22" r="18"></circle>
+      <circle class="bar" cx="22" cy="22" r="18"></circle>
+    </svg>
+    <span class="chevron" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6" />
       </svg>
-      <span class="chevron" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-             viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m18 15-6-6-6 6"/>
-        </svg>
-      </span>
-    </button>
+    </span>
+  </button>
 
-    <script src="script.js" defer></script>
-  </body>
+  <script src="script.js" defer></script>
+</body>
+
 </html>
